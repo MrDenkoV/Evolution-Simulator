@@ -1,9 +1,9 @@
 package agh.cs.project;
 
-public class Grass implements IMapElement{
+public class Weeds implements IMapElement{
     protected Vector2d position;
 
-    public Grass(Vector2d position){
+    public Weeds(Vector2d position){
         this.position = position;
     }
 

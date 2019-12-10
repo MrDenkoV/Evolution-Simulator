@@ -29,6 +29,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="findjar.last.used.dir" value="$PROJECT_DIR$/../../OOPyfstProj/Project" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../OOPyfstProj/Project" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -131,7 +132,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575846284695</updated>
-      <workItem from="1575846290192" duration="9423000" />
+      <workItem from="1575846290192" duration="15634000" />
     </task>
     <servers />
   </component>
@@ -139,6 +140,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="556" y="199" key="#HTTP_Proxy" timestamp="1575926494962">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="556" y="199" key="#HTTP_Proxy/0.0.1920.1044@0.0.1920.1044" timestamp="1575926494962" />
     <state x="839" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575923651599">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
@@ -151,14 +156,14 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="1113" y="298" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1575846895731" />
-    <state x="1238" y="206" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1575846766818">
+    <state x="1238" y="206" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1575927463154">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="1238" y="206" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1575846766818" />
-    <state x="1225" y="278" key="FileChooserDialogImpl" timestamp="1575923650839">
+    <state x="1238" y="206" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1575927463154" />
+    <state x="1225" y="278" key="FileChooserDialogImpl" timestamp="1575926479599">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="1225" y="278" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1575923650839" />
+    <state x="1225" y="278" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1575926479599" />
     <state width="939" height="276" key="GridCell.Tab.0.bottom" timestamp="1575923465044">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
@@ -175,13 +180,13 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state width="939" height="276" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1575923465043" />
-    <state x="888" y="98" key="SettingsEditor" timestamp="1575847176043">
+    <state x="888" y="98" key="SettingsEditor" timestamp="1575927464414">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="888" y="98" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1575847176043" />
-    <state x="1078" y="417" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1575846751395">
+    <state x="888" y="98" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1575927464414" />
+    <state x="1078" y="417" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1575927459436">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="1078" y="417" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1044@0.0.1920.1044" timestamp="1575846751395" />
+    <state x="1078" y="417" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1044@0.0.1920.1044" timestamp="1575927459436" />
   </component>
 </project>
