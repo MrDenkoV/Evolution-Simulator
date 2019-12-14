@@ -1,8 +1,11 @@
 package agh.cs.project;
 
+import java.util.Random;
+
 public class Vector2d {
     public final int x;
     public final int y;
+    protected static Random generator = new Random();
 
     public Vector2d(int x, int y) {
         this.x = x;
@@ -48,6 +51,18 @@ public class Vector2d {
 
     public Vector2d opposite() {
         return new Vector2d(-this.x, -this.y);
+    }
+
+    public Vector2d randInRange(Vector2d other){
+        return new Vector2d(this.x+generator.nextInt(other.x-this.x), this.y+generator.nextInt(other.y-this.y));
+    }
+
+    public Vector2d randOutside(Vector2d other, Vector2d lowerLeft, Vector2d upperRight){
+        Vector2d tmp=this.randInRange(other);
+        while(tmp.follows(lowerLeft) && tmp.precedes(upperRight)){
+            tmp=this.randInRange(other);
+        }
+        return tmp;
     }
 
     @Override

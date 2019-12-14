@@ -10,24 +10,22 @@ public class LoopedMap implements IWorldMap{
     protected Vector2d upperRight;
     protected Vector2d lowerLeftJungle;
     protected Vector2d upperRightJungle;
-    protected int startEnergy;
-    protected int moveEnergy;
-    protected int plantEnergy;
     protected static Random generator = new Random();
     protected LinkedList<Animal> animals = new LinkedList<Animal>();
     protected Map<Vector2d, LinkedList<IMapElement> > elements = new HashMap<>();
 
 
-    public LoopedMap(int width, int height, int startEnergy, int moveEnergy, int plantEnergy, double jungleRatio){
+    public LoopedMap(int width, int height, double jungleRatio){
         lowerLeft=new Vector2d(0,0);
         upperRight=new Vector2d(width,height);
 
         lowerLeftJungle=new Vector2d(width/2-(int)(width*jungleRatio)/2, height/2-(int)(height*jungleRatio)/2);
         upperRightJungle=new Vector2d(width/2+(int)(width*jungleRatio)/2,height/2+(int)(height*jungleRatio)/2);
+    }
 
-        this.startEnergy=startEnergy;
-        this.moveEnergy=moveEnergy;
-        this.plantEnergy=plantEnergy;
+    @Override
+    public String toString() {
+        return new MapVisualizer(this).draw(lowerLeft, upperRight, lowerLeftJungle, upperRightJungle);
     }
 
     @Override

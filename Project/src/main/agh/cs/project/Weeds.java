@@ -2,6 +2,7 @@ package agh.cs.project;
 
 public class Weeds implements IMapElement{
     protected Vector2d position;
+    protected static int energy;
 
     public Weeds(Vector2d position){
         this.position = position;

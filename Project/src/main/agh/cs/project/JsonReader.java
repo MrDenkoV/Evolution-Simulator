@@ -15,7 +15,7 @@ public class JsonReader {
     public static int plantEnergy;
     public static double jungleRatio;
 
-    private static void readJSON() throws Exception {
+    public static void readJSON() throws Exception {
         File file = new File("./parameters.json");
         String content = FileUtils.readFileToString(file, "utf-8");
 

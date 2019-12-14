@@ -1,13 +1,22 @@
 package agh.cs.project;
 
+import java.util.Random;
+
 public class Animal implements IMapElement{
     Vector2d position;
     Instruction[] instructions;
     MapDirection direction;
+    protected static int threshold;
+    protected static int moveEnergy;
+    protected int energy;
+    protected static Random generator = new Random();
 
-    public Animal(Vector2d position, Instruction[] instructs){
+    public Animal(Vector2d position, Instruction[] instructs, int energy){
         this.position=position;
         this.instructions=instructs;
+        this.energy=energy;
+        this.direction = MapDirection.N;
+        this.direction = direction.fromNumerical(generator.nextInt(9));
     }
 
     @Override
@@ -27,10 +36,6 @@ public class Animal implements IMapElement{
     @Override
     public Vector2d getPosition() {
         return this.position;
-    }
-
-    public Instruction[] getInstructions(){
-        return this.instructions;
     }
 
 }
