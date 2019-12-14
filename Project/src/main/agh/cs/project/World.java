@@ -1,5 +1,7 @@
 package agh.cs.project;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 
 public class World {
@@ -12,6 +14,18 @@ public class World {
             Animal.threshold=JsonReader.startEnergy/2;
             Animal.moveEnergy=JsonReader.moveEnergy;
 //            System.out.println(map.toString());
+
+
+            /*WIZUALIZACJA*/
+            JFrame obj = new JFrame();
+            Visualisation vis = new Visualisation();
+
+            obj.setBounds(100, 50, 905, 800);
+            obj.setBackground(Color.DARK_GRAY);
+            obj.setResizable(false);
+            obj.setVisible(true);
+            obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            obj.add(vis);
 
         }
         catch (IOException E){
