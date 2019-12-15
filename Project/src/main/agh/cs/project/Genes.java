@@ -5,19 +5,26 @@ import java.util.Random;
 import static java.lang.Math.min;
 
 public class Genes {
-    Instruction[] genes;
+    Instruction[] instructions;
     protected static Random generator = new Random();
 
     public Genes(Instruction[] genes){
-        this.genes=genes;
+        this.instructions=genes;
+    }
+
+    public Genes(){
+        this.instructions= new Instruction[32];
+        for(int i=0; i<32; i++){
+            this.instructions[i]=Instruction.fromNumerical(generator.nextInt(8));
+        }
     }
 
     public Genes mutate(Genes other){
         int a=generator.nextInt(32);
         int b=generator.nextInt(32);
-        Instruction[] gene=this.genes.clone();
+        Instruction[] gene=this.instructions.clone();
         if (-min(-a, -b) - min(a, b) >= 0)
-            System.arraycopy(other.genes, min(a, b), gene, min(a, b), -min(-a, -b) - min(a, b));
+            System.arraycopy(other.instructions, min(a, b), gene, min(a, b), -min(-a, -b) - min(a, b));
         return new Genes(gene);
     }
 }

@@ -2,6 +2,8 @@ package agh.cs.project;
 
 import java.util.Random;
 
+import static java.lang.Math.abs;
+
 public class Vector2d {
     public final int x;
     public final int y;
@@ -33,11 +35,11 @@ public class Vector2d {
     }
 
     public Vector2d add(Vector2d other) {
-        return new Vector2d(other.x + this.x, other.y + this.y);
+        return new Vector2d((other.x + this.x + JsonReader.width)%JsonReader.width, (other.y + this.y + JsonReader.height)%JsonReader.height);
     }
 
     public Vector2d subtract(Vector2d other) {
-        return new Vector2d(this.x - other.x, this.y - other.y);
+        return new Vector2d((this.x - other.x + JsonReader.width)%JsonReader.width, (this.y - other.y + JsonReader.height)%JsonReader.height);
     }
 
     public boolean equals(Object other) {
@@ -54,7 +56,7 @@ public class Vector2d {
     }
 
     public Vector2d randInRange(Vector2d other){
-        return new Vector2d(this.x+generator.nextInt(other.x-this.x), this.y+generator.nextInt(other.y-this.y));
+        return new Vector2d(this.x+generator.nextInt(abs(other.x-this.x)), this.y+generator.nextInt(abs(other.y-this.y)));
     }
 
     public Vector2d randOutside(Vector2d other, Vector2d lowerLeft, Vector2d upperRight){
@@ -63,6 +65,10 @@ public class Vector2d {
             tmp=this.randInRange(other);
         }
         return tmp;
+    }
+
+    public Vector2d randAround(){
+        return this.add(MapDirection.N.rotate(generator.nextInt(8)).toUnitVector());
     }
 
     @Override

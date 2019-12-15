@@ -54,7 +54,7 @@ public class Vector2dTest {
     }
 
     @Test
-    public void opposite(){
+    public void testOpposite(){
 
         Assert.assertNotEquals((new Vector2d(-1, 1)).opposite(), new Vector2d(-1, 1));
         Assert.assertEquals((new Vector2d(1, -1)).opposite(), new Vector2d(-1, 1));

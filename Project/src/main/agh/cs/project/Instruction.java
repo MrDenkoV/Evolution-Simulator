@@ -14,7 +14,7 @@ public enum Instruction {
         return this.ordinal();
     }
 
-    public Instruction fromNumerical(int instruct){
+    public static Instruction fromNumerical(int instruct){
         return Instruction.values()[instruct];
     }
 }

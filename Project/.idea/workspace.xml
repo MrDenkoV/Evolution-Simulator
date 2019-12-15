@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3fb88b47-f1b2-4fe2-87f7-ff3cd79ac81e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Visualisation.java" afterDir="false" />
+    <list default="true" id="3fb88b47-f1b2-4fe2-87f7-ff3cd79ac81e" name="Default Changelist" comment="Game logic">
+      <change afterPath="$PROJECT_DIR$/src/main/agh/cs/project/AnimalWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/agh/cs/project/IPositionChangeObserver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Turns.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parameters.json" beforeDir="false" afterPath="$PROJECT_DIR$/parameters.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Genes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Genes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/IWorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/IWorldMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Instruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Instruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/LoopedMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/LoopedMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Vector2d.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Vector2d.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Visualisation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Visualisation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Vector2dTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/Vector2dTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,22 +49,22 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../OOPylabs/lab7/lab2" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/agh/cs/project" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/.." />
+      <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="agh.cs.project" />
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/.." />
-      <recent name="$PROJECT_DIR$/src" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/agh/cs/project" />
     </key>
   </component>
   <component name="RunManager" selected="Application.World">
@@ -62,6 +72,16 @@
       <option name="MAIN_CLASS_NAME" value="agh.cs.project.World" />
       <module name="Project" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AnimalTest.swapTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AnimalTest" />
+      <option name="METHOD_NAME" value="swapTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -121,9 +141,11 @@
       <item itemvalue="JUnit.Vector2dTest.testEquals" />
       <item itemvalue="JUnit.Vector2dTest" />
       <item itemvalue="JUnit.JsonReaderTest.testReadJSON" />
+      <item itemvalue="JUnit.AnimalTest.swapTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AnimalTest.swapTest" />
         <item itemvalue="Application.World" />
         <item itemvalue="JUnit.JsonReaderTest.testReadJSON" />
         <item itemvalue="JUnit.Vector2dTest" />
@@ -154,7 +176,7 @@
       <option name="presentableId" value="Default" />
       <updated>1575846284695</updated>
       <workItem from="1575846290192" duration="16236000" />
-      <workItem from="1576272730801" duration="20757000" />
+      <workItem from="1576272730801" duration="44450000" />
     </task>
     <task id="LOCAL-00001" summary="General idea">
       <created>1576337863140</created>
@@ -163,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576337863140</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Vis started">
+      <created>1576350731786</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1576350731786</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,7 +200,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="General idea" />
-    <option name="LAST_COMMIT_MESSAGE" value="General idea" />
+    <MESSAGE value="Vis started" />
+    <MESSAGE value="Game logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Game logic" />
   </component>
   <component name="WindowStateProjectService">
     <state x="556" y="199" key="#HTTP_Proxy" timestamp="1575926494962">
@@ -182,10 +213,10 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="839" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1575923651599" />
-    <state x="769" y="233" key="#com.intellij.ide.util.MemberChooser" timestamp="1576327090374">
+    <state x="769" y="233" key="#com.intellij.ide.util.MemberChooser" timestamp="1576367085018">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="769" y="233" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1044@0.0.1920.1044" timestamp="1576327090374" />
+    <state x="769" y="233" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1044@0.0.1920.1044" timestamp="1576367085018" />
     <state x="1113" y="298" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1575846895731">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
@@ -194,38 +225,38 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="1238" y="206" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1575927463154" />
-    <state x="533" y="118" key="CommitChangelistDialog2" timestamp="1576350631405">
+    <state x="533" y="118" key="CommitChangelistDialog2" timestamp="1576411592077">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="533" y="118" key="CommitChangelistDialog2/0.0.1920.1044@0.0.1920.1044" timestamp="1576350631405" />
-    <state x="1225" y="278" key="FileChooserDialogImpl" timestamp="1575926479599">
+    <state x="533" y="118" key="CommitChangelistDialog2/0.0.1920.1044@0.0.1920.1044" timestamp="1576411592077" />
+    <state x="1225" y="278" key="FileChooserDialogImpl" timestamp="1576367045820">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="1225" y="278" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1575926479599" />
-    <state width="1878" height="179" key="GridCell.Tab.0.bottom" timestamp="1576349075924">
+    <state x="1225" y="278" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1576367045820" />
+    <state width="1878" height="179" key="GridCell.Tab.0.bottom" timestamp="1576412552162">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1878" height="179" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1576349075924" />
-    <state width="1878" height="179" key="GridCell.Tab.0.center" timestamp="1576349075923">
+    <state width="1878" height="179" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1576412552162" />
+    <state width="1878" height="179" key="GridCell.Tab.0.center" timestamp="1576412552161">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1878" height="179" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1576349075923" />
-    <state width="1878" height="179" key="GridCell.Tab.0.left" timestamp="1576349075923">
+    <state width="1878" height="179" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1576412552161" />
+    <state width="1878" height="179" key="GridCell.Tab.0.left" timestamp="1576412552161">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1878" height="179" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1576349075923" />
-    <state width="1878" height="179" key="GridCell.Tab.0.right" timestamp="1576349075924">
+    <state width="1878" height="179" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1576412552161" />
+    <state width="1878" height="179" key="GridCell.Tab.0.right" timestamp="1576412552161">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1878" height="179" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1576349075924" />
+    <state width="1878" height="179" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1576412552161" />
     <state x="888" y="98" key="SettingsEditor" timestamp="1575927464414">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="888" y="98" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1575927464414" />
-    <state x="556" y="256" key="Vcs.Push.Dialog.v2" timestamp="1576337872038">
+    <state x="556" y="256" key="Vcs.Push.Dialog.v2" timestamp="1576350740089">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="556" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1044@0.0.1920.1044" timestamp="1576337872038" />
+    <state x="556" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1044@0.0.1920.1044" timestamp="1576350740089" />
     <state x="627" y="348" key="com.intellij.ide.util.TipDialog" timestamp="1576272900570">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
@@ -234,9 +265,17 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="1078" y="417" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1044@0.0.1920.1044" timestamp="1575927459436" />
-    <state x="624" y="238" width="672" height="677" key="run.anything.popup" timestamp="1576324489400">
+    <state x="738" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576362081121">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="624" y="238" width="672" height="677" key="run.anything.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1576324489400" />
+    <state x="738" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1044@0.0.1920.1044" timestamp="1576362081121" />
+    <state x="624" y="238" width="672" height="677" key="run.anything.popup" timestamp="1576404141824">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="624" y="238" width="672" height="677" key="run.anything.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1576404141824" />
+    <state x="623" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1576406771736">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="623" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1576406771736" />
   </component>
 </project>

@@ -4,5 +4,7 @@
 	"startEnergy": 100,
 	"moveEnergy": 2,
 	"plantEnergy": 20,
-	"jungleRatio": 0.1
+	"jungleRatio": 0.1,
+	"startingAnimals": 2,
+	"double": false
 }

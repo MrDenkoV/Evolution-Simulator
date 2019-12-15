@@ -5,13 +5,13 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Random;
 
-public class LoopedMap implements IWorldMap{
+public class LoopedMap implements IWorldMap, IPositionChangeObserver{
     protected Vector2d lowerLeft;
     protected Vector2d upperRight;
     protected Vector2d lowerLeftJungle;
     protected Vector2d upperRightJungle;
     protected static Random generator = new Random();
-    protected LinkedList<Animal> animals = new LinkedList<Animal>();
+    protected LinkedList<Animal> animals = new LinkedList<>();
     protected Map<Vector2d, LinkedList<IMapElement> > elements = new HashMap<>();
 
 
@@ -29,22 +29,59 @@ public class LoopedMap implements IWorldMap{
     }
 
     @Override
-    public boolean place(IMapElement element) {
-        return false;
+    public boolean placeWeed(Weeds weed) {
+        if (isOccupied(weed.getPosition()))
+            return false;
+        LinkedList<IMapElement> elements = new LinkedList<>();
+        elements.add(weed);
+        this.elements.put(weed.getPosition(), elements);
+        return true;
     }
 
     @Override
-    public void run(Instruction[] genotype) {
-        //generator.nextint(32);
+    public void placeAnimal(Animal animal){
+        LinkedList<IMapElement> elements;
+        if(isOccupied(animal.getPosition())) {
+            elements = this.elements.get(animal.getPosition());
+            if(elements.getFirst() instanceof Weeds)
+                elements.clear();
+        }
+        else
+            elements = new LinkedList<>();
+        elements.add(animal);
+        this.elements.put(animal.getPosition(), elements);
+        animal.addObserver(this);
+        this.animals.add(animal);
     }
+
+//    public void turn() {
+        //kill&&move
+        //eat
+        //breed
+        //plants
+//    }
 
     @Override
     public boolean isOccupied(Vector2d position) {
-        return false;
+        return this.objectsAt(position).size()!=0;
     }
 
     @Override
     public LinkedList<IMapElement> objectsAt(Vector2d position) {
-        return null;
+        return this.elements.get(position);
+    }
+
+    @Override
+    public void positionChanged(Vector2d oldPosition, Vector2d newPosition, Animal animal) {
+        elements.get(oldPosition).remove(animal);
+        if(newPosition.equals(new Vector2d(-1,-1)))
+            animals.remove(animal);
+        else {
+            if (elements.get(newPosition) == null) {
+                LinkedList<IMapElement> tmp = new LinkedList<>();
+                elements.put(newPosition, tmp);
+            }
+            elements.get(newPosition).add(animal);
+        }
     }
 }
