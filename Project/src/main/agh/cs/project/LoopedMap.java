@@ -54,16 +54,20 @@ public class LoopedMap implements IWorldMap, IPositionChangeObserver{
         this.animals.add(animal);
     }
 
-//    public void turn() {
+    public void turn() {
         //kill&&move
+        Turns.move(animals);
         //eat
+        Turns.eat(animals,elements);
         //breed
+        Turns.breed(animals, elements, this);
         //plants
-//    }
+        Turns.weeds(this);
+    }
 
     @Override
     public boolean isOccupied(Vector2d position) {
-        return this.objectsAt(position).size()!=0;
+        return this.objectsAt(position)!=null;
     }
 
     @Override

@@ -1,18 +1,22 @@
 package agh.cs.project;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 public class Turns {
     //kill&&move
-    public void move(LinkedList<Animal> animals){
+    public static void move(LinkedList<Animal> animals){
         for(Animal animal: animals)
+        {
+            System
             animal.move();
+        }
+        System.out.println("Move");
     }
 
     //eat
-    public void eat(LinkedList<Animal> animals, HashMap<Vector2d, LinkedList<IMapElement>> map){
+    public static void eat(LinkedList<Animal> animals, Map<Vector2d, LinkedList<IMapElement>> map){
         for(Animal animal: animals){
             LinkedList<IMapElement> tmp=map.get(animal.getPosition());
             if(tmp.getFirst() instanceof Weeds){
@@ -34,10 +38,11 @@ public class Turns {
                 }
             }
         }
+        System.out.println("Eat");
     }
 
     //breed
-    public void breed(LinkedList<Animal> animals, HashMap<Vector2d, LinkedList<IMapElement>> map, LoopedMap MAP){
+    public static void breed(LinkedList<Animal> animals, Map<Vector2d, LinkedList<IMapElement>> map, LoopedMap MAP){
         boolean[][] bred = new boolean[JsonReader.width][JsonReader.height];
         for(boolean[] row : bred){
             Arrays.fill(row, false);
@@ -83,7 +88,7 @@ public class Turns {
     }
     //plants
 
-    public void weeds(LoopedMap map){
+    public static void weeds(LoopedMap map){
         for(int i=0; i<map.upperRight.x*map.upperRight.y/10; i++){
             if(map.placeWeed(new Weeds(map.lowerLeft.randOutside(map.upperRight, map.lowerLeftJungle, map.upperRightJungle)))) break;
         }
@@ -92,7 +97,7 @@ public class Turns {
         }
     }
 
-    public void turn(LinkedList<Animal> animals, HashMap<Vector2d, LinkedList<IMapElement>> hashmap, LoopedMap map){
+    public void turn(LinkedList<Animal> animals, Map<Vector2d, LinkedList<IMapElement>> hashmap, LoopedMap map){
         move(animals);
         eat(animals, hashmap);
         breed(animals, hashmap, map);

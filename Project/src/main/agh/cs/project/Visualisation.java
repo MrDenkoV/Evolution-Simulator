@@ -38,9 +38,9 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
 
         //map
         g.setColor(Color.RED);
-        g.drawRect(24, 184, 851, 557);
+        g.drawRect(24, 184, 851, 556);
 
-        g.setColor(Color.BLACK);
+        g.setColor(Color.LIGHT_GRAY);
         g.fillRect(25, 185, 850, 555);
 
         g.dispose();

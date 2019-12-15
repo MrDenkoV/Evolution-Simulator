@@ -13,11 +13,22 @@ public class World {
             Weeds.energy=JsonReader.plantEnergy;
             Animal.threshold=JsonReader.startEnergy/2;
             Animal.moveEnergy=JsonReader.moveEnergy;
-//            System.out.println(map.toString());
+            System.out.println(map.toString());
+            for(int i=0; i<JsonReader.animals; i++)
+                Animal.generateAnimal(map);
+            System.out.println('?');
+            System.out.println(map.toString());
 
+            for(int i=0; i<100; i++)
+            {
+                map.turn();
+                System.out.println("Epoch: " + String.valueOf(i));
+                System.out.println(map.toString());
+
+            }
 
             /*WIZUALIZACJA*/
-            JFrame obj = new JFrame();
+            /*JFrame obj = new JFrame();
             Visualisation vis = new Visualisation();
 
             obj.setBounds(100, 50, 905, 800);
@@ -25,7 +36,7 @@ public class World {
             obj.setResizable(false);
             obj.setVisible(true);
             obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            obj.add(vis);
+            obj.add(vis);*/
 
         }
         catch (IOException E){

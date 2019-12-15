@@ -20,7 +20,7 @@ public class Animal implements IMapElement{
         this.genes=genes;
         this.energy=energy;
         this.direction = MapDirection.N;
-        this.direction = direction.fromNumerical(generator.nextInt(9));
+        this.direction = direction.fromNumerical(generator.nextInt(8));
         this.map=map;
     }
 
@@ -29,7 +29,14 @@ public class Animal implements IMapElement{
         this.genes=genes;
         this.energy=energy;
         this.direction = MapDirection.N;
-        this.direction = direction.fromNumerical(generator.nextInt(9));
+        this.direction = direction.fromNumerical(generator.nextInt(8));
+    }
+
+    public static void generateAnimal(LoopedMap map){
+        Vector2d tmp = new Vector2d(generator.nextInt(JsonReader.width), generator.nextInt(JsonReader.height));
+        while(map.isOccupied(tmp))
+            tmp = new Vector2d(generator.nextInt(JsonReader.width), generator.nextInt(JsonReader.height));
+        map.placeAnimal(new Animal(tmp, new Genes(), JsonReader.startEnergy));
     }
 
     @Override

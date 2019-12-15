@@ -80,10 +80,10 @@ public class MapVisualizer {
             //Object object = this.map.objectAt(currentPosition);
 //            LinkedList<IMapElement> objects = this.map.objectsAt(currentPosition);
             LinkedList objects = this.map.objectsAt(currentPosition);
-            if(objects.size()>1)
+            if(objects!=null && objects.size()>1)
 //                result = MULTIPLE_CELL;
                 result = Integer.toString(objects.size());
-            else if (objects.size()==1) {
+            else if (objects!=null && objects.size()==1) {
                 result = objects.get(0).toString();
             } else {
                 if(currentPosition.precedes(jungleUpperRight)&&currentPosition.follows(jungleLowerLeft))

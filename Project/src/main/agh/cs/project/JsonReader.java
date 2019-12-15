@@ -14,6 +14,8 @@ public class JsonReader {
     public static int moveEnergy;
     public static int plantEnergy;
     public static double jungleRatio;
+    public static boolean dbl;
+    public static int animals;
 
     public static void readJSON() throws Exception {
         File file = new File("./parameters.json");
@@ -28,6 +30,8 @@ public class JsonReader {
         JsonReader.moveEnergy = JsonObject.getInt("moveEnergy");
         JsonReader.plantEnergy = JsonObject.getInt("plantEnergy");
         JsonReader.jungleRatio = JsonObject.getDouble("jungleRatio");
+        JsonReader.dbl = JsonObject.getBoolean("double");
+        JsonReader.animals = JsonObject.getInt("animals");
     }
 
 }
