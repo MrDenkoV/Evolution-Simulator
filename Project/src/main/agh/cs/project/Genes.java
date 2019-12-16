@@ -1,5 +1,6 @@
 package agh.cs.project;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import static java.lang.Math.min;
@@ -17,6 +18,13 @@ public class Genes {
         for(int i=0; i<32; i++){
             this.instructions[i]=Instruction.fromNumerical(generator.nextInt(8));
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Genes{" +
+                "instructions=" + Arrays.toString(instructions) +
+                '}';
     }
 
     public Genes mutate(Genes other){

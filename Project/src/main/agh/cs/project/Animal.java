@@ -67,7 +67,9 @@ public class Animal implements IMapElement{
         if(this.energy<0)
             this.kill();
         this.direction=this.direction.rotate(genes.instructions[generator.nextInt(32)].getNumerical());
-        this.position.add(this.direction.toUnitVector());
+        Vector2d old=this.position;
+        this.position=this.position.add(this.direction.toUnitVector());
+        this.positionChange(old, this.position);
     }
 
     public void kill(){

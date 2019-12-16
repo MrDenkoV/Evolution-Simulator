@@ -3,14 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="3fb88b47-f1b2-4fe2-87f7-ff3cd79ac81e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameters.json" beforeDir="false" afterPath="$PROJECT_DIR$/parameters.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/JsonReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/JsonReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Genes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Genes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/LoopedMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/LoopedMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/MapVisualizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/MapVisualizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/MapDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/MapDirection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Turns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Turns.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Visualisation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Visualisation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Vector2d.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Vector2d.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Vector2dTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/Vector2dTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,14 +104,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Vector2dTest.testEquals" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Vector2dTest.testAdd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="Vector2dTest" />
-      <option name="METHOD_NAME" value="testEquals" />
+      <option name="METHOD_NAME" value="testAdd" />
       <option name="TEST_OBJECT" value="method" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -134,18 +132,18 @@
     <list>
       <item itemvalue="Application.World" />
       <item itemvalue="JUnit.tests" />
-      <item itemvalue="JUnit.Vector2dTest.testEquals" />
       <item itemvalue="JUnit.Vector2dTest" />
       <item itemvalue="JUnit.JsonReaderTest.testReadJSON" />
       <item itemvalue="JUnit.AnimalTest.swapTest" />
+      <item itemvalue="JUnit.Vector2dTest.testAdd" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.World" />
+        <item itemvalue="JUnit.Vector2dTest.testAdd" />
         <item itemvalue="JUnit.AnimalTest.swapTest" />
         <item itemvalue="JUnit.JsonReaderTest.testReadJSON" />
         <item itemvalue="JUnit.Vector2dTest" />
-        <item itemvalue="JUnit.Vector2dTest.testEquals" />
       </list>
     </recent_temporary>
   </component>
@@ -172,7 +170,7 @@
       <option name="presentableId" value="Default" />
       <updated>1575846284695</updated>
       <workItem from="1575846290192" duration="16236000" />
-      <workItem from="1576272730801" duration="54439000" />
+      <workItem from="1576272730801" duration="63488000" />
     </task>
     <task id="LOCAL-00001" summary="General idea">
       <created>1576337863140</created>
@@ -195,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576415775437</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Working on logic">
+      <created>1576436527796</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1576436527796</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,7 +210,8 @@
     <MESSAGE value="General idea" />
     <MESSAGE value="Vis started" />
     <MESSAGE value="Game logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Game logic" />
+    <MESSAGE value="Working on logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on logic" />
   </component>
   <component name="WindowStateProjectService">
     <state x="556" y="199" key="#HTTP_Proxy" timestamp="1575926494962">
@@ -216,10 +222,14 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="839" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1575923651599" />
-    <state x="769" y="233" key="#com.intellij.ide.util.MemberChooser" timestamp="1576367085018">
+    <state x="100" y="100" width="1720" height="844" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1576441761328">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="769" y="233" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1044@0.0.1920.1044" timestamp="1576367085018" />
+    <state x="100" y="100" width="1720" height="844" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1576441761328" />
+    <state x="769" y="233" key="#com.intellij.ide.util.MemberChooser" timestamp="1576443822135">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="769" y="233" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1044@0.0.1920.1044" timestamp="1576443822135" />
     <state x="1113" y="298" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1575846895731">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
@@ -228,38 +238,38 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="1238" y="206" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1575927463154" />
-    <state x="533" y="118" key="CommitChangelistDialog2" timestamp="1576415775270">
+    <state x="533" y="118" key="CommitChangelistDialog2" timestamp="1576436527306">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="533" y="118" key="CommitChangelistDialog2/0.0.1920.1044@0.0.1920.1044" timestamp="1576415775270" />
+    <state x="533" y="118" key="CommitChangelistDialog2/0.0.1920.1044@0.0.1920.1044" timestamp="1576436527306" />
     <state x="1225" y="278" key="FileChooserDialogImpl" timestamp="1576367045820">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="1225" y="278" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1576367045820" />
-    <state width="1878" height="321" key="GridCell.Tab.0.bottom" timestamp="1576436489503">
+    <state width="1878" height="321" key="GridCell.Tab.0.bottom" timestamp="1576501095459">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1878" height="321" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1576436489503" />
-    <state width="1878" height="321" key="GridCell.Tab.0.center" timestamp="1576436489501">
+    <state width="1878" height="321" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1576501095459" />
+    <state width="1878" height="321" key="GridCell.Tab.0.center" timestamp="1576501095458">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1878" height="321" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1576436489501" />
-    <state width="1878" height="321" key="GridCell.Tab.0.left" timestamp="1576436489500">
+    <state width="1878" height="321" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1576501095458" />
+    <state width="1878" height="321" key="GridCell.Tab.0.left" timestamp="1576501095457">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1878" height="321" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1576436489500" />
-    <state width="1878" height="321" key="GridCell.Tab.0.right" timestamp="1576436489502">
+    <state width="1878" height="321" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1576501095457" />
+    <state width="1878" height="321" key="GridCell.Tab.0.right" timestamp="1576501095458">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1878" height="321" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1576436489502" />
+    <state width="1878" height="321" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1576501095458" />
     <state x="888" y="98" key="SettingsEditor" timestamp="1575927464414">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="888" y="98" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1575927464414" />
-    <state x="556" y="256" key="Vcs.Push.Dialog.v2" timestamp="1576436514515">
+    <state x="556" y="256" key="Vcs.Push.Dialog.v2" timestamp="1576501139007">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="556" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1044@0.0.1920.1044" timestamp="1576436514515" />
+    <state x="556" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1044@0.0.1920.1044" timestamp="1576501139007" />
     <state x="627" y="348" key="com.intellij.ide.util.TipDialog" timestamp="1576272900570">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
@@ -276,9 +286,9 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="624" y="238" width="672" height="677" key="run.anything.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1576404141824" />
-    <state x="623" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1576406771736">
+    <state x="623" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1576443771158">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="623" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1576406771736" />
+    <state x="623" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1576443771158" />
   </component>
 </project>

@@ -3,6 +3,7 @@ package agh.cs.project;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.util.Random;
 
 public class World {
     public static void main(String[] args){
@@ -18,6 +19,11 @@ public class World {
                 Animal.generateAnimal(map);
             System.out.println('?');
             System.out.println(map.toString());
+
+            for(Animal animal: map.animals){
+                System.out.println(animal.position.toString()+' '+String.valueOf(animal.energy)+' '+String.valueOf(animal.direction));
+                System.out.println(animal.genes);
+            }
 
             for(int i=0; i<100; i++)
             {

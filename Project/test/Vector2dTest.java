@@ -1,3 +1,4 @@
+import agh.cs.project.JsonReader;
 import agh.cs.project.Vector2d;
 import org.junit.Assert;
 import org.junit.Test;
@@ -43,8 +44,17 @@ public class Vector2dTest {
 
     @Test
     public void testAdd(){
+        JsonReader.width=20;
+        JsonReader.height=40;
+
         Assert.assertEquals((new Vector2d(1,2).add(new Vector2d(3, 4))), new Vector2d(4,6));
         Assert.assertNotEquals((new Vector2d(1,2).add(new Vector2d(3, 4))), new Vector2d(5,7));
+
+        Vector2d zeros=new Vector2d(0,0);
+        Vector2d upperRight=new Vector2d(20, 40);
+        Vector2d ones=new Vector2d(1,1);
+        Assert.assertEquals(zeros, upperRight.add(ones));
+        Assert.assertEquals(zeros.subtract(ones), upperRight);
     }
 
     @Test

@@ -1,6 +1,7 @@
 package agh.cs.project;
 
 import java.util.Random;
+import java.util.Vector;
 
 import static java.lang.Math.abs;
 
@@ -35,11 +36,11 @@ public class Vector2d {
     }
 
     public Vector2d add(Vector2d other) {
-        return new Vector2d((other.x + this.x + JsonReader.width)%JsonReader.width, (other.y + this.y + JsonReader.height)%JsonReader.height);
+        return new Vector2d((other.x + this.x + JsonReader.width+1)%(JsonReader.width+1), (other.y + this.y + JsonReader.height+1)%(JsonReader.height+1));
     }
 
     public Vector2d subtract(Vector2d other) {
-        return new Vector2d((this.x - other.x + JsonReader.width)%JsonReader.width, (this.y - other.y + JsonReader.height)%JsonReader.height);
+        return new Vector2d((this.x - other.x + JsonReader.width+1)%(JsonReader.width+1), (this.y - other.y + JsonReader.height+1)%(JsonReader.height+1));
     }
 
     public boolean equals(Object other) {
@@ -56,7 +57,16 @@ public class Vector2d {
     }
 
     public Vector2d randInRange(Vector2d other){
-        return new Vector2d(this.x+generator.nextInt(abs(other.x-this.x)), this.y+generator.nextInt(abs(other.y-this.y)));
+        int x, y;
+        if(this.x==other.x)
+            x=this.x;
+        else
+            x=this.x+generator.nextInt(abs(other.x-this.x));
+        if(this.y==other.y)
+            y=this.y;
+        else
+            y=this.y+generator.nextInt(abs(other.y-this.y));
+        return new Vector2d(x, y);
     }
 
     public Vector2d randOutside(Vector2d other, Vector2d lowerLeft, Vector2d upperRight){

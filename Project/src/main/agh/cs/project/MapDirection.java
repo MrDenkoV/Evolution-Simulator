@@ -32,7 +32,7 @@ public enum MapDirection {
     }
 
     public MapDirection rotate(int degrees){
-        return fromNumerical(this.getNumerical() + degrees);
+        return fromNumerical((this.getNumerical() + degrees)%8);
     }
 
     public Vector2d toUnitVector() {
