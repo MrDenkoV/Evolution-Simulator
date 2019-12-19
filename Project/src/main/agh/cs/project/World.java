@@ -1,29 +1,27 @@
 package agh.cs.project;
 
-import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
-import java.util.Random;
 
 public class World {
     public static void main(String[] args){
         System.out.println("henlo");
         try{
-            JsonReader.readJSON();
-            LoopedMap map = new LoopedMap(JsonReader.width, JsonReader.height, JsonReader.jungleRatio);
-            Weeds.energy=JsonReader.plantEnergy;
-            Animal.threshold=JsonReader.startEnergy/2;
-            Animal.moveEnergy=JsonReader.moveEnergy;
+            Json.readJSON();
+            LoopedMap map = new LoopedMap(Json.width, Json.height, Json.jungleRatio);
+            Weeds.energy= Json.plantEnergy;
+            Animal.threshold= Json.startEnergy/2;
+            Animal.moveEnergy= Json.moveEnergy;
+
             System.out.println(map.toString());
-            for(int i=0; i<JsonReader.animals; i++)
+            for(int i = 0; i< Json.animals; i++)
                 Animal.generateAnimal(map);
             System.out.println('?');
             System.out.println(map.toString());
 
-            for(Animal animal: map.animals){
+            /*for(Animal animal: map.animals){
                 System.out.println(animal.position.toString()+' '+String.valueOf(animal.energy)+' '+String.valueOf(animal.direction));
                 System.out.println(animal.genes);
-            }
+            }*/
 
             for(int i=0; i<100; i++)
             {
@@ -32,7 +30,8 @@ public class World {
                 System.out.println(map.toString());
 
             }
-
+            //System.out.println(map.lowerLeftJungle);
+            //System.out.println(map.upperRightJungle);
             /*WIZUALIZACJA*/
             /*JFrame obj = new JFrame();
             Visualisation vis = new Visualisation();

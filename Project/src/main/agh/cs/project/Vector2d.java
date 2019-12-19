@@ -1,7 +1,6 @@
 package agh.cs.project;
 
 import java.util.Random;
-import java.util.Vector;
 
 import static java.lang.Math.abs;
 
@@ -36,11 +35,11 @@ public class Vector2d {
     }
 
     public Vector2d add(Vector2d other) {
-        return new Vector2d((other.x + this.x + JsonReader.width+1)%(JsonReader.width+1), (other.y + this.y + JsonReader.height+1)%(JsonReader.height+1));
+        return new Vector2d((other.x + this.x + Json.width+1)%(Json.width+1), (other.y + this.y + Json.height+1)%(Json.height+1));
     }
 
     public Vector2d subtract(Vector2d other) {
-        return new Vector2d((this.x - other.x + JsonReader.width+1)%(JsonReader.width+1), (this.y - other.y + JsonReader.height+1)%(JsonReader.height+1));
+        return new Vector2d((this.x - other.x + Json.width+1)%(Json.width+1), (this.y - other.y + Json.height+1)%(Json.height+1));
     }
 
     public boolean equals(Object other) {
@@ -61,11 +60,11 @@ public class Vector2d {
         if(this.x==other.x)
             x=this.x;
         else
-            x=this.x+generator.nextInt(abs(other.x-this.x));
+            x=this.x+generator.nextInt(abs(other.x-this.x+1));
         if(this.y==other.y)
             y=this.y;
         else
-            y=this.y+generator.nextInt(abs(other.y-this.y));
+            y=this.y+generator.nextInt(abs(other.y-this.y+1));
         return new Vector2d(x, y);
     }
 

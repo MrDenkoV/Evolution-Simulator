@@ -56,14 +56,14 @@ public class LoopedMap implements IWorldMap, IPositionChangeObserver{
 
     public void turn() {
 //        kill&&move
-        Turns.move(animals);
+//        Turns.move(animals);
 //        eat
-        Turns.eat(animals,elements);
+//        Turns.eat(animals,elements);
 //        breed
-        Turns.breed(animals, elements, this);
+//        Turns.breed(animals, elements, this);
 //        plants
-        Turns.weeds(this);
-//        Turns.turn(animals, elements, this);
+//        Turns.weeds(this);
+        Turns.turn(animals, elements, this);
     }
 
     @Override
@@ -78,15 +78,16 @@ public class LoopedMap implements IWorldMap, IPositionChangeObserver{
 
     @Override
     public void positionChanged(Vector2d oldPosition, Vector2d newPosition, Animal animal) {
-        elements.get(oldPosition).remove(animal);
-        if(newPosition.equals(new Vector2d(-1,-1)))
-            animals.remove(animal);
+        this.elements.get(oldPosition).remove(animal);
+        if(newPosition.equals(new Vector2d(-1,-1))) {
+            this.animals.remove(animal);
+        }
         else {
             if (elements.get(newPosition) == null) {
                 LinkedList<IMapElement> tmp = new LinkedList<>();
-                elements.put(newPosition, tmp);
+                this.elements.put(newPosition, tmp);
             }
-            elements.get(newPosition).add(animal);
+            this.elements.get(newPosition).add(animal);
         }
     }
 }

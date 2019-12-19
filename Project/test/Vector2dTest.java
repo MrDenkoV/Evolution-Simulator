@@ -1,4 +1,4 @@
-import agh.cs.project.JsonReader;
+import agh.cs.project.Json;
 import agh.cs.project.Vector2d;
 import org.junit.Assert;
 import org.junit.Test;
@@ -44,8 +44,8 @@ public class Vector2dTest {
 
     @Test
     public void testAdd(){
-        JsonReader.width=20;
-        JsonReader.height=40;
+        Json.width=20;
+        Json.height=40;
 
         Assert.assertEquals((new Vector2d(1,2).add(new Vector2d(3, 4))), new Vector2d(4,6));
         Assert.assertNotEquals((new Vector2d(1,2).add(new Vector2d(3, 4))), new Vector2d(5,7));

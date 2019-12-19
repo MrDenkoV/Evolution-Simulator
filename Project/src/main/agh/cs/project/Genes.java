@@ -18,6 +18,7 @@ public class Genes {
         for(int i=0; i<32; i++){
             this.instructions[i]=Instruction.fromNumerical(generator.nextInt(8));
         }
+        Arrays.sort(this.instructions);
     }
 
     @Override
@@ -33,6 +34,7 @@ public class Genes {
         Instruction[] gene=this.instructions.clone();
         if (-min(-a, -b) - min(a, b) >= 0)
             System.arraycopy(other.instructions, min(a, b), gene, min(a, b), -min(-a, -b) - min(a, b));
+        Arrays.sort(gene);
         return new Genes(gene);
     }
 }

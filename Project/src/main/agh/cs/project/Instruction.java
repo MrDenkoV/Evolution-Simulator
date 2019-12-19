@@ -1,6 +1,6 @@
 package agh.cs.project;
 
-public enum Instruction {
+public enum Instruction{
     F,
     FR,
     R,
