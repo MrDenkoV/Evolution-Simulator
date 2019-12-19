@@ -7,7 +7,7 @@ import static java.lang.Math.abs;
 public class Vector2d {
     public final int x;
     public final int y;
-    protected static Random generator = new Random();
+//    protected static Random generator = new Random();
 
     public Vector2d(int x, int y) {
         this.x = x;
@@ -55,29 +55,29 @@ public class Vector2d {
         return new Vector2d(-this.x, -this.y);
     }
 
-    public Vector2d randInRange(Vector2d other){
+    public Vector2d randInRange(Vector2d other, LoopedMap map){
         int x, y;
         if(this.x==other.x)
             x=this.x;
         else
-            x=this.x+generator.nextInt(abs(other.x-this.x+1));
+            x=this.x+map.generator.nextInt(abs(other.x-this.x+1));
         if(this.y==other.y)
             y=this.y;
         else
-            y=this.y+generator.nextInt(abs(other.y-this.y+1));
+            y=this.y+map.generator.nextInt(abs(other.y-this.y+1));
         return new Vector2d(x, y);
     }
 
-    public Vector2d randOutside(Vector2d other, Vector2d lowerLeft, Vector2d upperRight){
-        Vector2d tmp=this.randInRange(other);
+    public Vector2d randOutside(Vector2d other, Vector2d lowerLeft, Vector2d upperRight, LoopedMap map){
+        Vector2d tmp=this.randInRange(other, map);
         while(tmp.follows(lowerLeft) && tmp.precedes(upperRight)){
-            tmp=this.randInRange(other);
+            tmp=this.randInRange(other, map);
         }
         return tmp;
     }
 
-    public Vector2d randAround(){
-        return this.add(MapDirection.N.rotate(generator.nextInt(8)).toUnitVector());
+    public Vector2d randAround(LoopedMap map){
+        return this.add(MapDirection.N.rotate(map.generator.nextInt(8)).toUnitVector());
     }
 
     @Override

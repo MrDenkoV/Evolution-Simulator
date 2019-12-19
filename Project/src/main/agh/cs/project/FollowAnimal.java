@@ -24,6 +24,11 @@ public class FollowAnimal {
 
     public void addKid(){
         this.kidsCount++;
+        this.addDescendant();
+    }
+
+    public Animal getParent(){
+        return this.parent;
     }
 
     public long getKidsCount(){

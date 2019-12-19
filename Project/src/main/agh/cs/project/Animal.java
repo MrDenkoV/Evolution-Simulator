@@ -10,10 +10,12 @@ public class Animal implements IMapElement{
     protected static int threshold;
     protected static int moveEnergy;
     protected int energy;
-    protected static Random generator = new Random();
+    //protected static Random generator = new Random();
     protected LinkedList<IPositionChangeObserver> observers = new LinkedList<>();
     protected boolean isDescendant;
-//    private IWorldMap map;
+    private LoopedMap map;
+    private long kidsCount;
+    private long life=0;
 
 
 //    public Animal(Vector2d position, Genes genes, int energy, IWorldMap map){
@@ -25,28 +27,32 @@ public class Animal implements IMapElement{
 ////        this.map=map;
 //    }
 
-    public Animal(Vector2d position, Genes genes, int energy){
+    public Animal(Vector2d position, Genes genes, int energy, LoopedMap map){
         this.position=position;
         this.genes=genes;
         this.energy=energy;
         this.direction = MapDirection.N;
-        this.direction = direction.fromNumerical(generator.nextInt(8));
+        this.direction = direction.fromNumerical(map.generator.nextInt(8));
+        this.map=map;
+        this.kidsCount=0;
     }
 
-    public Animal(Vector2d position, Genes genes, int energy, boolean isDescendant){
+    public Animal(Vector2d position, Genes genes, int energy, LoopedMap map, boolean isDescendant){
         this.position=position;
         this.genes=genes;
         this.energy=energy;
         this.direction = MapDirection.N;
-        this.direction = direction.fromNumerical(generator.nextInt(8));
+        this.direction = direction.fromNumerical(map.generator.nextInt(8));
+        this.map=map;
         this.isDescendant=isDescendant;
+        this.kidsCount=0;
     }
 
     public static void generateAnimal(LoopedMap map){
-        Vector2d tmp = new Vector2d(generator.nextInt(Json.width), generator.nextInt(Json.height));
+        Vector2d tmp = new Vector2d(map.generator.nextInt(Json.width), map.generator.nextInt(Json.height));
         while(map.isOccupied(tmp))
-            tmp = new Vector2d(generator.nextInt(Json.width), generator.nextInt(Json.height));
-        map.placeAnimal(new Animal(tmp, new Genes(), Json.startEnergy));
+            tmp = new Vector2d(map.generator.nextInt(Json.width), map.generator.nextInt(Json.height));
+        map.placeAnimal(new Animal(tmp, new Genes(map), Json.startEnergy, map, false));
     }
 
     @Override
@@ -78,12 +84,28 @@ public class Animal implements IMapElement{
 
     public void resetFollowing(){ this.isDescendant=false; }
 
+    public void addKid(){
+        this.kidsCount++;
+    }
+
+    public long getKids(){
+        return this.kidsCount;
+    }
+
+    public void incrementAge(){
+        this.life++;
+    }
+
+    public long getLife(){
+        return this.life;
+    }
+
     public void move(){
         this.energy-=Animal.moveEnergy;
         if(this.energy<0)
             this.kill();
         else {
-            this.direction = this.direction.rotate(genes.instructions[generator.nextInt(32)].getNumerical());
+            this.direction = this.direction.rotate(genes.instructions[this.map.generator.nextInt(32)].getNumerical());
             Vector2d old = this.position;
             this.position = this.position.add(this.direction.toUnitVector());
             this.positionChange(old, this.position);

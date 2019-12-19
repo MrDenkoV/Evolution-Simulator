@@ -10,9 +10,12 @@ public class LoopedMap implements IWorldMap, IPositionChangeObserver{
     protected Vector2d upperRight;
     protected Vector2d lowerLeftJungle;
     protected Vector2d upperRightJungle;
-    protected static Random generator = new Random();
+    protected Random generator = new Random();
     protected LinkedList<Animal> animals = new LinkedList<>();
     protected Map<Vector2d, LinkedList<IMapElement> > elements = new HashMap<>();
+    protected FollowAnimal following;
+    protected Statistics statistics=new Statistics();
+    protected long weedsCount=0;
 
 
     public LoopedMap(int width, int height, double jungleRatio){
@@ -35,6 +38,7 @@ public class LoopedMap implements IWorldMap, IPositionChangeObserver{
         LinkedList<IMapElement> elements = new LinkedList<>();
         elements.add(weed);
         this.elements.put(weed.getPosition(), elements);
+        this.weedsCount++;
         return true;
     }
 
@@ -43,8 +47,10 @@ public class LoopedMap implements IWorldMap, IPositionChangeObserver{
         LinkedList<IMapElement> elements;
         if(isOccupied(animal.getPosition())) {
             elements = this.elements.get(animal.getPosition());
-            if(elements.getFirst() instanceof Weeds)
+            if(elements.getFirst() instanceof Weeds) {
                 elements.clear();
+                this.weedsCount--;
+            }
         }
         else
             elements = new LinkedList<>();
@@ -52,6 +58,7 @@ public class LoopedMap implements IWorldMap, IPositionChangeObserver{
         this.elements.put(animal.getPosition(), elements);
         animal.addObserver(this);
         this.animals.add(animal);
+
     }
 
     public void turn() {
@@ -64,6 +71,10 @@ public class LoopedMap implements IWorldMap, IPositionChangeObserver{
 //        plants
 //        Turns.weeds(this);
         Turns.turn(animals, elements, this);
+    }
+
+    public void startFollowing(Animal animal){
+        this.following=new FollowAnimal(animal);
     }
 
     @Override

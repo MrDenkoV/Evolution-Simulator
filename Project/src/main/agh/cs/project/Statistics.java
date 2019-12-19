@@ -1,5 +1,8 @@
 package agh.cs.project;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Statistics{
     private long epochs;
     private long currentAnimalCount;
@@ -13,6 +16,8 @@ public class Statistics{
     private double currentKidsCount;
     private double totalKidsCount;
     private Genes genotype;
+    private Map<Genes, Long> genotypes = new HashMap<>();
+    private long mostCommonGenotype;
 
     public Statistics(){
         this.epochs=0;
@@ -26,6 +31,7 @@ public class Statistics{
         this.totalAvgLife=0;
         this.currentKidsCount=0;
         this.totalKidsCount=0;
+        this.mostCommonGenotype=0;
     }
 
     public void epochsIncrement(){
@@ -72,6 +78,21 @@ public class Statistics{
 
     public void setGenotype(Genes genotype){
         this.genotype=genotype;
+    }
+
+    public void addGenotype(Genes genotype){
+        long occurrences = 1;
+        if(this.genotypes.get(genotype)==null)
+            this.genotypes.put(genotype, 1L);
+        else{
+            occurrences=this.genotypes.get(genotype);
+            this.genotypes.remove(genotype);
+            this.genotypes.put(genotype, occurrences+1);
+        }
+        if(this.mostCommonGenotype<occurrences){
+            this.mostCommonGenotype=occurrences;
+            this.setGenotype(genotype);
+        }
     }
 
     public void setCurrentAvgEnergy(double avgEnergy){

@@ -5,23 +5,25 @@ import java.util.*;
 public class Turns {
     //kill&&move
     private static void move(LinkedList<Animal> animals){
-        ArrayList<Animal> animals1 = new ArrayList<Animal>(animals);
-        if(Json.debug) System.out.println("BeforeMove "+String.valueOf(animals1.size()));
+        ArrayList<Animal> animals1 = new ArrayList<>(animals);
+        if(Json.debug) System.out.println("BeforeMove "+animals1.size());
         for(Animal animal: animals1)
         {
             animal.move();
             if(Json.debug) System.out.println(animal.getPosition());
         }
-        if(Json.debug) System.out.println("Move");
+        if(Json.debug)
+            System.out.println("Move");
     }
 
     //eat
-    private static void eat(LinkedList<Animal> animals, Map<Vector2d, LinkedList<IMapElement>> map){
+    private static void eat(LinkedList<Animal> animals, Map<Vector2d, LinkedList<IMapElement>> hashMap, LoopedMap map){
         for(Animal animal: animals){
-            LinkedList<IMapElement> tmp=map.get(animal.getPosition());
+            LinkedList<IMapElement> tmp=hashMap.get(animal.getPosition());
             if(tmp.getFirst() instanceof Weeds){
+                map.weedsCount--;
                 tmp.removeFirst();
-                LinkedList<Animal> strongest = new LinkedList<Animal>();
+                LinkedList<Animal> strongest = new LinkedList<>();
                 int most=0;
                 for(IMapElement element: tmp){
                     if(((Animal) element).energy>most){
@@ -42,7 +44,7 @@ public class Turns {
     }
 
     //breed
-    private static void breed(LinkedList<Animal> animals, Map<Vector2d, LinkedList<IMapElement>> map, LoopedMap MAP){
+    private static void breed(LinkedList<Animal> animals, Map<Vector2d, LinkedList<IMapElement>> hashMap, LoopedMap map){
         boolean[][] bred = new boolean[Json.width+1][Json.height+1];
         for(boolean[] row : bred){
             Arrays.fill(row, false);
@@ -54,7 +56,7 @@ public class Turns {
             if(!bred[animal.getPosition().x][animal.getPosition().y]) {
                 bred[animal.getPosition().x][animal.getPosition().y] = true;
                 LinkedList<IMapElement> animalsOnPosition;
-                animalsOnPosition = map.get(animal.getPosition());
+                animalsOnPosition = hashMap.get(animal.getPosition());
                 if (animalsOnPosition.size() > 1) {
                     Animal strongestAnimal=(Animal)animalsOnPosition.get(0);
                     Animal secondStrongestAnimal=(Animal)animalsOnPosition.get(1);
@@ -75,15 +77,28 @@ public class Turns {
                         }
                     }
                     if(secondStrongestAnimal.energy>=Animal.threshold){
-                        Vector2d pos=strongestAnimal.getPosition().randAround();
+                        Vector2d pos=strongestAnimal.getPosition().randAround(map);
                         for(int i=0; i<30; i++){
-                            if(!MAP.isOccupied(pos) && !kidsPositions.contains(pos)) break;
-                            pos=strongestAnimal.getPosition().randAround();
+                            if(!map.isOccupied(pos) && !kidsPositions.contains(pos)) break;
+                            pos=strongestAnimal.getPosition().randAround(map);
                         }
-                        Animal bby = new Animal(pos, strongestAnimal.getGenes().mutate(secondStrongestAnimal.getGenes()), secondStrongestAnimal.energy/4+strongestAnimal.energy/4);//, MAP);
+
+                        Animal bby;
+                        if(strongestAnimal.isDescendant||secondStrongestAnimal.isDescendant){
+                            bby = new Animal(pos, strongestAnimal.getGenes().mutate(secondStrongestAnimal.getGenes(), map), secondStrongestAnimal.energy/4+strongestAnimal.energy/4, map, true);
+                            if(strongestAnimal.equals(map.following.getParent())||secondStrongestAnimal.equals(map.following.getParent()))
+                                map.following.addKid();
+                            else
+                                map.following.addDescendant();
+                        }
+                        else
+                            bby = new Animal(pos, strongestAnimal.getGenes().mutate(secondStrongestAnimal.getGenes(), map), secondStrongestAnimal.energy/4+strongestAnimal.energy/4, map);
+
+                        strongestAnimal.addKid();
+                        secondStrongestAnimal.addKid();
                         children.add(bby);
                         kidsPositions.add(pos);
-//                        MAP.placeAnimal(bby);
+//                        map.placeAnimal(bby);
                         strongestAnimal.energy=strongestAnimal.energy*3/4;
                         secondStrongestAnimal.energy=secondStrongestAnimal.energy*3/4;
                     }
@@ -91,27 +106,47 @@ public class Turns {
             }
         }
         for(Animal bby: children)
-            MAP.placeAnimal(bby);
+            map.placeAnimal(bby);
         if(Json.debug) System.out.println("breed");
     }
 
     //plants
     private static void weeds(LoopedMap map){
         for(int i=0; i<map.upperRight.x*map.upperRight.y/4+10; i++){
-            if(map.placeWeed(new Weeds(map.lowerLeft.randOutside(map.upperRight, map.lowerLeftJungle, map.upperRightJungle)))) break;
+            if(map.placeWeed(new Weeds(map.lowerLeft.randOutside(map.upperRight, map.lowerLeftJungle, map.upperRightJungle, map)))) break;
         }
         if(Json.debug) System.out.println("weed");
         for(int i=0; i<map.upperRightJungle.x*map.upperRightJungle.y/4+10; i++){
-            if(map.placeWeed(new Weeds(map.lowerLeftJungle.randInRange(map.upperRightJungle)))) break;
+            if(map.placeWeed(new Weeds(map.lowerLeftJungle.randInRange(map.upperRightJungle, map)))) break;
         }
         if(Json.debug) System.out.println("plant");
     }
 
     public static void turn(LinkedList<Animal> animals, Map<Vector2d, LinkedList<IMapElement>> hashmap, LoopedMap map){
         move(animals);
-        eat(animals, hashmap);
+        eat(animals, hashmap, map);
         breed(animals, hashmap, map);
         weeds(map);
+        map.statistics.epochsIncrement();
+        map.statistics.setCurrentAnimalCount(animals.size());
+        map.statistics.setCurrentWeedsCount(map.weedsCount);
+        double energy=0;
+        double life=0;
+        double kids=0;
+        double danimals=(double) animals.size();
+        Genes genotype;
+//        if(genotype)
+        for(Animal animal: animals){
+            kids+=animal.getKids();
+            life+=animal.getLife();
+            energy+=animal.getEnergy();
+            animal.incrementAge();
+        }
+        if(animals.size()>0) {
+            map.statistics.setCurrentAvgEnergy(energy / danimals);
+            map.statistics.setCurrentKidsCount(kids / danimals);
+            map.statistics.setCurrentAvgLife(life / danimals);
+        }
         System.out.println(animals.size());
     }
 }
