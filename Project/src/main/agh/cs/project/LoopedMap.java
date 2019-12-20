@@ -58,7 +58,7 @@ public class LoopedMap implements IWorldMap, IPositionChangeObserver{
         this.elements.put(animal.getPosition(), elements);
         animal.addObserver(this);
         this.animals.add(animal);
-
+        this.statistics.addGenotype(animal);
     }
 
     public void turn() {
@@ -92,6 +92,7 @@ public class LoopedMap implements IWorldMap, IPositionChangeObserver{
         this.elements.get(oldPosition).remove(animal);
         if(newPosition.equals(new Vector2d(-1,-1))) {
             this.animals.remove(animal);
+            this.statistics.removeGenotype(animal);
         }
         else {
             if (elements.get(newPosition) == null) {

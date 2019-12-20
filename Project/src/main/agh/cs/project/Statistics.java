@@ -1,6 +1,7 @@
 package agh.cs.project;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 public class Statistics{
@@ -15,9 +16,9 @@ public class Statistics{
     private double totalAvgLife;
     private double currentKidsCount;
     private double totalKidsCount;
-    private Genes genotype;
-    private Map<Genes, Long> genotypes = new HashMap<>();
-    private long mostCommonGenotype;
+    private Genes mostCommonGenotype;
+    private Map<Genes, HashSet<Animal> > genotypes = new HashMap<>();
+    private long mostCommonGenotypeCounter;
 
     public Statistics(){
         this.epochs=0;
@@ -31,7 +32,7 @@ public class Statistics{
         this.totalAvgLife=0;
         this.currentKidsCount=0;
         this.totalKidsCount=0;
-        this.mostCommonGenotype=0;
+        this.mostCommonGenotypeCounter =0;
     }
 
     public void epochsIncrement(){
@@ -50,8 +51,8 @@ public class Statistics{
         return this.currentWeedsCount;
     }
 
-    public Genes getGenotype(){
-        return this.genotype;
+    public Genes getMostCommonGenotype(){
+        return this.mostCommonGenotype;
     }
 
     public double getCurrentAvgEnergy() {
@@ -76,23 +77,49 @@ public class Statistics{
         this.totalWeedsCount+=weeds;
     }
 
-    public void setGenotype(Genes genotype){
-        this.genotype=genotype;
+    public void setMostCommonGenotype(Genes mostCommonGenotype){
+        this.mostCommonGenotype = mostCommonGenotype;
     }
 
-    public void addGenotype(Genes genotype){
-        long occurrences = 1;
-        if(this.genotypes.get(genotype)==null)
-            this.genotypes.put(genotype, 1L);
+    public void addGenotype(Animal animal){
+//        long occurrences = 1;
+        Genes genotype = animal.getGenes();
+        if(this.genotypes.get(genotype)==null) {
+            HashSet<Animal> animals= new HashSet<>();
+            animals.add(animal);
+            this.genotypes.put(genotype, animals);
+        }
         else{
-            occurrences=this.genotypes.get(genotype);
-            this.genotypes.remove(genotype);
-            this.genotypes.put(genotype, occurrences+1);
+//            occurrences=this.genotypes.get(genotype);
+//            this.genotypes.remove(genotype);
+//            this.genotypes.put(genotype, occurrences+1);
+            this.genotypes.get(genotype).add(animal);
         }
-        if(this.mostCommonGenotype<occurrences){
-            this.mostCommonGenotype=occurrences;
-            this.setGenotype(genotype);
+//        if(this.mostCommonGenotype<occurrences){
+//            this.mostCommonGenotype=occurrences;
+        long occurrences = this.genotypes.get(genotype).size();
+        if(this.mostCommonGenotypeCounter <occurrences){
+            this.setMostCommonGenotype(genotype);
+            this.mostCommonGenotypeCounter =occurrences;
         }
+    }
+
+    public void resetGenotypes(){
+        for(Genes genotype: this.genotypes.keySet()){
+            long sizes=this.genotypes.get(genotype).size();
+            if(this.mostCommonGenotypeCounter>sizes){
+                this.mostCommonGenotypeCounter=sizes;
+                this.mostCommonGenotype=genotype;
+            }
+        }
+    }
+
+    public void removeGenotype(Animal animal){
+        Genes genotype = animal.getGenes();
+        this.genotypes.get(genotype).remove(animal);
+        this.mostCommonGenotypeCounter--;
+        if(this.mostCommonGenotype.equals(genotype))
+            this.resetGenotypes();
     }
 
     public void setCurrentAvgEnergy(double avgEnergy){
@@ -112,7 +139,7 @@ public class Statistics{
 
     public void saveStatistics() throws Exception {
         double depochs = (double) this.epochs;
-        Json.writeJSON(this.epochs, totalAnimalCount/depochs, totalWeedsCount/depochs, genotype, totalAvgEnergy/depochs, totalAvgLife/depochs, totalKidsCount/depochs);
+        Json.writeJSON(this.epochs, totalAnimalCount/depochs, totalWeedsCount/depochs, mostCommonGenotype, totalAvgEnergy/depochs, totalAvgLife/depochs, totalKidsCount/depochs);
     }
 
 }
