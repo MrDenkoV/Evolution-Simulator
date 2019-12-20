@@ -1,5 +1,7 @@
 package agh.cs.project;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 
 public class World {
@@ -33,15 +35,15 @@ public class World {
             //System.out.println(map.lowerLeftJungle);
             //System.out.println(map.upperRightJungle);
             /*WIZUALIZACJA*/
-            /*JFrame obj = new JFrame();
-            Visualisation vis = new Visualisation();
+            JFrame obj = new JFrame();
+            Visualisation vis = new Visualisation(map);
 
-            obj.setBounds(100, 50, 905, 800);
+            obj.setBounds(50, 50, 2*905, 800);
             obj.setBackground(Color.DARK_GRAY);
             obj.setResizable(false);
             obj.setVisible(true);
             obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            obj.add(vis);*/
+            obj.add(vis);
 
         }
         catch (IOException E){
