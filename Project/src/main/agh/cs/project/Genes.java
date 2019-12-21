@@ -23,9 +23,14 @@ public class Genes {
 
     @Override
     public String toString() {
-        return "Genes{" +
-                "instructions=" + Arrays.toString(instructions) +
-                '}';
+//        return Arrays.toString(instructions);
+        StringBuilder wyn= new StringBuilder();
+        for(Instruction instruction: instructions)
+            wyn.append(instruction.getNumerical());
+        return wyn.toString();
+//        return "Genes{" +
+//                "instructions=" + Arrays.toString(instructions) +
+//                '}';
     }
 
     @Override

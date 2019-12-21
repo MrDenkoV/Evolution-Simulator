@@ -93,6 +93,7 @@ public class LoopedMap implements IWorldMap, IPositionChangeObserver{
         if(newPosition.equals(new Vector2d(-1,-1))) {
             this.animals.remove(animal);
             this.statistics.removeGenotype(animal);
+            this.statistics.setCurrentAvgLife(animal.getLife());
         }
         else {
             if (elements.get(newPosition) == null) {

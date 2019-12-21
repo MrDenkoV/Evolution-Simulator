@@ -19,6 +19,7 @@ public class Statistics{
     private Genes mostCommonGenotype;
     private Map<Genes, HashSet<Animal> > genotypes = new HashMap<>();
     private long mostCommonGenotypeCounter;
+    private long deadAnimals;
 
     public Statistics(){
         this.epochs=0;
@@ -32,7 +33,8 @@ public class Statistics{
         this.totalAvgLife=0;
         this.currentKidsCount=0;
         this.totalKidsCount=0;
-        this.mostCommonGenotypeCounter =0;
+        this.mostCommonGenotypeCounter=0;
+        this.deadAnimals=0;
     }
 
     public void epochsIncrement(){
@@ -122,13 +124,20 @@ public class Statistics{
             this.resetGenotypes();
     }
 
+    public void incrementDeadAnimals(){
+        this.deadAnimals++;
+    }
+
     public void setCurrentAvgEnergy(double avgEnergy){
         this.currentAvgEnergy=avgEnergy;
         this.totalAvgEnergy+=avgEnergy;
     }
 
     public void setCurrentAvgLife(double avgLife){
-        this.currentAvgLife=avgLife;
+        double tmp=this.currentAvgLife*this.deadAnimals;
+//        this.currentAvgLife=avgLife;
+        this.incrementDeadAnimals();
+        this.currentAvgLife=(avgLife+tmp)/deadAnimals;
         this.totalAvgEnergy+=avgLife;
     }
 

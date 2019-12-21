@@ -138,15 +138,15 @@ public class Turns {
 //        if(genotype)
         for(Animal animal: animals){
             kids+=animal.getKids();
-            life+=animal.getLife();
+//            life+=animal.getLife();
             energy+=animal.getEnergy();
             animal.incrementAge();
         }
         if(animals.size()>0) {
             map.statistics.setCurrentAvgEnergy(energy / danimals);
             map.statistics.setCurrentKidsCount(kids / danimals);
-            map.statistics.setCurrentAvgLife(life / danimals);
+//            map.statistics.setCurrentAvgLife(life / danimals);
         }
-        System.out.println(animals.size());
+//        System.out.println(animals.size());
     }
 }
