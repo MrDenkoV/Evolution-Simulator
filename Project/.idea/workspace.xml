@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3fb88b47-f1b2-4fe2-87f7-ff3cd79ac81e" name="Default Changelist" comment="small changes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameters.json" beforeDir="false" afterPath="$PROJECT_DIR$/parameters.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Genes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Genes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/LoopedMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/LoopedMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Statistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Statistics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Turns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Turns.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Visualisation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Visualisation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/World.java" afterDir="false" />
-    </list>
+    <list default="true" id="3fb88b47-f1b2-4fe2-87f7-ff3cd79ac81e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -249,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576917967321</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="WORKING">
+      <created>1576931548035</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1576931548035</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +264,8 @@
     <MESSAGE value="Statistics improved" />
     <MESSAGE value="Visualisation's first foundations" />
     <MESSAGE value="small changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="small changes" />
+    <MESSAGE value="WORKING" />
+    <option name="LAST_COMMIT_MESSAGE" value="WORKING" />
   </component>
   <component name="WindowStateProjectService">
     <state x="556" y="199" key="#HTTP_Proxy" timestamp="1575926494962">
@@ -297,10 +296,10 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="718" y="35" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1576760935418" />
-    <state x="533" y="118" key="CommitChangelistDialog2" timestamp="1576917977755">
+    <state x="533" y="118" key="CommitChangelistDialog2" timestamp="1576931547880">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="533" y="118" key="CommitChangelistDialog2/0.0.1920.1044@0.0.1920.1044" timestamp="1576917977755" />
+    <state x="533" y="118" key="CommitChangelistDialog2/0.0.1920.1044@0.0.1920.1044" timestamp="1576931547880" />
     <state x="1225" y="278" key="FileChooserDialogImpl" timestamp="1576367045820">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
@@ -345,10 +344,10 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="689" y="256" width="540" height="524" key="StructurePopup/0.0.1920.1044@0.0.1920.1044" timestamp="1576762578297" />
-    <state x="556" y="256" key="Vcs.Push.Dialog.v2" timestamp="1576917981777">
+    <state x="556" y="256" key="Vcs.Push.Dialog.v2" timestamp="1576931552556">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="556" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1044@0.0.1920.1044" timestamp="1576917981777" />
+    <state x="556" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1044@0.0.1920.1044" timestamp="1576931552556" />
     <state x="627" y="348" key="com.intellij.ide.util.TipDialog" timestamp="1576539781396">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
