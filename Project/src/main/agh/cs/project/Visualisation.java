@@ -40,7 +40,7 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
     public void paint(Graphics g){
         //header border
         g.setColor(Color.WHITE);
-        g.drawRect(24, 10, this.width*2+48, 155);
+        g.drawRect(24, 10, this.width*2+48+40, 155);
 
         //pause
         g.setColor(Color.RED);
@@ -110,7 +110,7 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
         g.setFont(new Font("arial", Font.PLAIN, 30));
         g.drawString("Print", x+width-250+65, y+20+43);
 
-        g.setColor(Color.WHITE);
+        g.setColor(Color.BLUE);
         g.setFont(new Font("arial", Font.PLAIN, 14));
         g.drawString("Epoch: "+epoch, x+80, 30);
         g.drawString("Animals: "+0, x+71, 50);
