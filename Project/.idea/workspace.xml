@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3fb88b47-f1b2-4fe2-87f7-ff3cd79ac81e" name="Default Changelist" comment="" />
+    <list default="true" id="3fb88b47-f1b2-4fe2-87f7-ff3cd79ac81e" name="Default Changelist" comment="Working Final Version without cleaning comments!" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +36,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../OOPylabs/lab7/lab2" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -348,6 +348,10 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="1113" y="298" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1575846895731" />
+    <state x="1138" y="307" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1576969061616">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="1138" y="307" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1576969061616" />
     <state x="1238" y="206" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1575927463154">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
@@ -396,10 +400,10 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state width="1878" height="341" key="GridCell.Tab.1.right/0.0.1920.1044@0.0.1920.1044" timestamp="1576871661588" />
-    <state x="888" y="98" key="SettingsEditor" timestamp="1576926615421">
+    <state x="888" y="98" key="SettingsEditor" timestamp="1576969111285">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="888" y="98" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1576926615421" />
+    <state x="888" y="98" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1576969111285" />
     <state x="689" y="256" width="540" height="524" key="StructurePopup" timestamp="1576762578297">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
