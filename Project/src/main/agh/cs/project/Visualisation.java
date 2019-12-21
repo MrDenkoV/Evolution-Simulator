@@ -20,7 +20,8 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
     public static boolean paused=true;
     public static boolean drawn=true;
     private boolean closed=false;
-    private boolean showing=false;
+    private boolean showingLeft=false;
+    private boolean showingRight=false;
 
     private Vector2d field;
     private int width=851;
@@ -222,7 +223,7 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
 //            g.fillRect(x+parent.getPosition().x*field.x, y+parent.getPosition().y*field.y+sizey, field.x, sizey);
         }
 
-        if(showing){
+        if((showingLeft && map.equals(leftMap)) || (showingRight && map.equals(rightMap))){
 //            int sizex=field.x/3;
             int sizey=field.y/3;
             g.setColor(Color.WHITE);
@@ -266,11 +267,11 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
                 }
                 else if(pos.follows(new Vector2d(24+width-150-200, 10+20)) && pos.precedes(new Vector2d(24+width-150-200+150, 10+20+50))) {//leftallgenes
                     System.out.println("Left most Top Genes: " + x + "," + y);
-                    showing=!showing;
+                    showingLeft=!showingLeft;
                 }
                 else if(pos.follows(new Vector2d(24+width+48+width-150-200, 10+20)) && pos.precedes(new Vector2d(24+width+48+width-150-200+150, 10+20+50))) {//rightallgenes
                     System.out.println("Right most Top Genes: " + x + "," + y);
-                    showing=!showing;
+                    showingRight=!showingRight;
                 }
                 else if(pos.follows(new Vector2d(25, 185)) && pos.precedes(new Vector2d(25+width, 185+height))){//leftmap
                     System.out.print("Left map: "+x +","+ y);
