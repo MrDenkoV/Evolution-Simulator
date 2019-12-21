@@ -155,6 +155,6 @@ public class Turns {
             map.statistics.setCurrentKidsCount(kids / danimals);
 //            map.statistics.setCurrentAvgLife(life / danimals);
         }
-
+        map.statistics.increaseTotalAvgLife();
     }
 }

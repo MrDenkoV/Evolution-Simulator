@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
+import static java.lang.Math.max;
+
 public class Statistics{
     private long epochs;
     private long currentAnimalCount;
@@ -136,9 +138,15 @@ public class Statistics{
     public void setCurrentAvgLife(double avgLife){
         double tmp=this.currentAvgLife*this.deadAnimals;
 //        this.currentAvgLife=avgLife;
+//        this.totalAvgLife+=(avgLife+tmp);
+//        this.currentAvgLife=((double) avgLife+this.totalAvgEnergy)/deadAnimals;
         this.incrementDeadAnimals();
         this.currentAvgLife=(avgLife+tmp)/deadAnimals;
-        this.totalAvgEnergy+=avgLife;
+//        this.totalAvgLife+=currentAvgLife;
+    }
+
+    public void increaseTotalAvgLife(){
+        this.totalAvgLife+=this.currentAvgLife;
     }
 
     public void setCurrentKidsCount(double kidsCount){
@@ -146,9 +154,10 @@ public class Statistics{
         this.totalKidsCount+=kidsCount;
     }
 
-    public void saveStatistics() throws Exception {
+    public void saveStatistics(String side) throws Exception {
         double depochs = (double) this.epochs;
-        Json.writeJSON(this.epochs, totalAnimalCount/depochs, totalWeedsCount/depochs, mostCommonGenotype, totalAvgEnergy/depochs, totalAvgLife/depochs, totalKidsCount/depochs);
+        double danimals=(double) max(this.deadAnimals, 1);
+        Json.writeJSON(side, this.epochs, totalAnimalCount/depochs, totalWeedsCount/depochs, mostCommonGenotype, totalAvgEnergy/depochs, totalAvgLife/danimals, totalKidsCount/depochs);
     }
 
 }

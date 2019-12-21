@@ -36,7 +36,7 @@ public class Json {
         Json.animals = JsonObject.getInt("startingAnimals");
     }
 
-    public static void writeJSON(long epochs, double averageAnimals, double averageWeeds, Genes genotype, double averageEnergy, double averageLife, double averageKids) throws Exception{
+    public static void writeJSON(String side, long epochs, double averageAnimals, double averageWeeds, Genes genotype, double averageEnergy, double averageLife, double averageKids) throws Exception{
         JSONObject JsonObj = new JSONObject();
         JsonObj.put("averageAnimals: ", averageAnimals);
         JsonObj.put("averageWeeds", averageWeeds);
@@ -46,7 +46,7 @@ public class Json {
         JsonObj.put("averageLife", averageLife);
         JsonObj.put("averageKids", averageKids);
 
-        String name="Epochs"+String.valueOf(epochs)+".json";
+        String name=side+"Epochs"+String.valueOf(epochs)+".json";
 
 //        System.out.println(JsonObj.toString(4));
         File file = new File(name);

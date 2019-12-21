@@ -1,13 +1,9 @@
 package agh.cs.project;
 
-import sun.awt.X11.XSystemTrayPeer;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
+import java.io.IOException;
 import java.util.LinkedList;
 
 public class Visualisation extends JPanel implements KeyListener, ActionListener {
@@ -20,7 +16,7 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
 
 //    private int epoch=0;
 
-    public boolean paused=true;
+    public static boolean paused=true;
     private boolean closed=false;
 
     private Vector2d field;
@@ -29,17 +25,30 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
     private LoopedMap leftMap;
     private LoopedMap rightMap;
 
-    public Visualisation(LoopedMap leftMap, LoopedMap rightMap){
-        this.field = new Vector2d(width/(leftMap.upperRight.x+1), height/(leftMap.upperRight.y+1));
-        this.leftMap=leftMap;
-        this.rightMap=rightMap;
-        this.width=this.width-this.width%(leftMap.upperRight.x+1);
-        this.height=this.height-this.height%(leftMap.upperRight.y+1);
+//    public Visualisation(LoopedMap leftMap, LoopedMap rightMap){
+//        this.field = new Vector2d(width/(leftMap.upperRight.x+1), height/(leftMap.upperRight.y+1));
+//        this.leftMap=leftMap;
+//        this.rightMap=rightMap;
+//        this.width=this.width-this.width%(leftMap.upperRight.x+1);
+//        this.height=this.height-this.height%(leftMap.upperRight.y+1);
+//        addKeyListener(this);
+//        setFocusable(true);
+//        setFocusTraversalKeysEnabled(false);
+//        timer = new Timer(delay, this);
+//        timer.start();
+//    }
+
+    public Visualisation(LoopedMap leftMap, LoopedMap rightMap) {
+        this.field = new Vector2d(width / (leftMap.upperRight.x + 1), height / (leftMap.upperRight.y + 1));
+        this.leftMap = leftMap;
+        this.rightMap = rightMap;
+        this.width = this.width - this.width % (leftMap.upperRight.x + 1);
+        this.height = this.height - this.height % (leftMap.upperRight.y + 1);
         addKeyListener(this);
+        // BADE
+        addMouseClickListener();
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
-        timer = new Timer(delay, this);
-        timer.start();
     }
 
     public void paint(Graphics g){
@@ -50,27 +59,36 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
 
             //pause
             g.setColor(Color.RED);
-            g.drawRect(24 + 851, 10, 48, 155);
-            g.fillRect(25 + 851, 11, 47, 154);
+            g.drawRect(24 + width, 10, 48, 155);
+            g.fillRect(25 + width, 11, 47, 154);
             g.setColor(Color.WHITE);
             g.setFont(new Font("arial", Font.PLAIN, 30));
-            g.drawString("P", 24 + 851 + 14, 40);
-            g.drawString("A", 24 + 851 + 14, 70);
-            g.drawString("U", 24 + 851 + 14, 100);
-            g.drawString("S", 24 + 851 + 14, 130);
-            g.drawString("E", 24 + 851 + 14, 160);
+            if(paused) {
+                g.drawString("P", 24 + width + 14, 40);
+                g.drawString("A", 24 + width + 14, 70);
+                g.drawString("U", 24 + width + 14, 100);
+                g.drawString("S", 24 + width + 14, 130);
+                g.drawString("E", 24 + width + 14, 160);
+            }
+            else{
+                g.drawString("S", 24 + width + 14, 40);
+                g.drawString("T", 24 + width + 14, 70);
+                g.drawString("A", 24 + width + 14, 100);
+                g.drawString("R", 24 + width + 14, 130);
+                g.drawString("T", 24 + width + 14, 160);
+            }
 
             //left header
             paintHeader(g, 24, 10, this.width, 155, this.leftMap);
 
             //right header
-            paintHeader(g, 24 + 851 + 48, 10, this.width, 155, this.rightMap);
+            paintHeader(g, 24 + this.width + 48, 10, this.width, 155, this.rightMap);
 
             //left map
             paintMap(g, 25, 185, this.width, this.height, this.leftMap);
 
             //right map
-            paintMap(g, 25 + 851 + 48, 185, this.width, this.height, this.rightMap);
+            paintMap(g, 25 + width + 48, 185, this.width, this.height, this.rightMap);
 
             g.dispose();
         }
@@ -168,7 +186,50 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
                 //g.drawRect(x+i*this.field.x, y+j*this.field.y, this.field.x, this.field.y);
             }
         }
+    }
 
+    public void addMouseClickListener(){
+        this.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                int x = e.getX();
+                int y = e.getY();
+                System.out.println(x + "," + y);
+                try {
+                    this.classifyAndAct(x, y);
+                }catch (IOException ex){
+                    System.out.println(ex + "File? Path? IOException!");
+                }
+                catch (Exception ex) {
+                    ex.printStackTrace();
+                    System.out.println("Saving exception " + ex);
+                }
+            }
+
+            private void classifyAndAct(int x, int y) throws Exception {
+//                g.drawRect(24 + width, 10, 48, 155);
+                Vector2d pos=new Vector2d(x, y);
+                if(pos.follows(new Vector2d(24+width, 10)) && pos.precedes(new Vector2d(24+width+48, 10+155))){//pause
+                    Visualisation.paused=!Visualisation.paused;
+                    System.out.println(Visualisation.paused);
+                }
+                else if(pos.follows(new Vector2d(25+width-250, 10+20)) && pos.precedes(new Vector2d(25+width-250+200, 10+20+70))){//leftprint
+                    System.out.println("Left print: "+x +","+ y);
+                    leftMap.statistics.saveStatistics("Left");
+                }
+                else if(pos.follows(new Vector2d(25+width+48+width-250, 10+20)) && pos.precedes(new Vector2d(25+width+48+width-250+200, 10+20+70))){//rightprint
+                    System.out.println("Right print: "+x +","+ y);
+                    rightMap.statistics.saveStatistics("Right");
+                }
+                else if(pos.follows(new Vector2d(25, 185)) && pos.precedes(new Vector2d(25+width-1, 185+height-1))){//leftmap
+                    System.out.print("Left map: "+x +","+ y);
+                    System.out.println("\tLeft map: "+(x-25)/field.x +","+ (y-185)/field.y);
+                }
+                else if(pos.follows(new Vector2d(25+width+48, 185)) && pos.precedes(new Vector2d(25+width+48+width-1, 185+height-1))){//rightmap
+                    System.out.print("Right map: "+x +","+ y);
+                    System.out.println("\tRight map: "+(x-25-width-48)/field.x +","+ (y-185)/field.y);
+                }
+            }
+        });
     }
 
 }

@@ -1,6 +1,5 @@
 package agh.cs.project;
 
-import javax.xml.bind.util.ValidationEventCollector;
 import java.util.LinkedList;
 
 /**

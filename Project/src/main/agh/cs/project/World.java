@@ -43,7 +43,7 @@ public class World {
             //System.out.println(map.lowerLeftJungle);
             //System.out.println(map.upperRightJungle);
             /*WIZUALIZACJA*/
-            JFrame obj = new JFrame();
+            JFrame obj = new JFrame("Simulation");
             Visualisation vis = new Visualisation(leftMap, rightMap);
 
             obj.setBounds(50, 50, 2*905, 800);
@@ -54,7 +54,7 @@ public class World {
             obj.add(vis);
 
             while(true){
-                if(!vis.paused) {
+                if(!Visualisation.paused) {
                     leftMap.turn();
                     rightMap.turn();
                 }
