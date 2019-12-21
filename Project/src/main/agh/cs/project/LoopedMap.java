@@ -14,6 +14,7 @@ public class LoopedMap implements IWorldMap, IPositionChangeObserver{
     protected LinkedList<Animal> animals = new LinkedList<>();
     protected Map<Vector2d, LinkedList<IMapElement> > elements = new HashMap<>();
     protected FollowAnimal following;
+    protected boolean isFollowed=false;
     protected Statistics statistics=new Statistics();
     protected long weedsCount=0;
 
@@ -77,8 +78,28 @@ public class LoopedMap implements IWorldMap, IPositionChangeObserver{
         Turns.setStatistics(this);
     }
 
+    public boolean isClicked(int x, int y){
+        LinkedList<IMapElement> atPosition = this.elements.get(new Vector2d(x, y));
+        if(atPosition==null || atPosition.size()==0 || atPosition.getFirst() instanceof Weeds)
+            return false;
+        Animal strongest=(Animal)atPosition.getFirst();
+        for(IMapElement element: atPosition){
+            Animal animal = (Animal) element;
+            if(strongest.getEnergy()<animal.getEnergy())
+                strongest=animal;
+        }
+        startFollowing(strongest);
+        return true;
+    }
+
     public void startFollowing(Animal animal){
-        this.following=new FollowAnimal(animal);
+        this.isFollowed=true;
+        this.following=new FollowAnimal(animal, this.statistics.getEpochs());
+    }
+
+    public void resetFollowing(){
+        this.isFollowed=false;
+        this.following.resetFollowing(this.animals);
     }
 
     @Override
@@ -98,6 +119,8 @@ public class LoopedMap implements IWorldMap, IPositionChangeObserver{
             this.animals.remove(animal);
             this.statistics.removeGenotype(animal);
             this.statistics.setCurrentAvgLife(animal.getLife());
+            if(this.isFollowed && this.following.getParent().equals(animal))
+                this.following.setDeathEpoch(this.statistics.getEpochs());
         }
         else {
             if (elements.get(newPosition) == null) {

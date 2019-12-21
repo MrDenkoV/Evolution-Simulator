@@ -35,6 +35,7 @@ public class Animal implements IMapElement{
         this.direction = direction.fromNumerical(map.generator.nextInt(8));
         this.map=map;
         this.kidsCount=0;
+        this.isDescendant=false;
     }
 
     public Animal(Vector2d position, Genes genes, int energy, LoopedMap map, boolean isDescendant){

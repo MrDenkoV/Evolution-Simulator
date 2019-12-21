@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.LinkedList;
 
 public class Visualisation extends JPanel implements KeyListener, ActionListener {
@@ -11,13 +12,15 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
     private ImageIcon jungle = new ImageIcon("jungle.svg");
     private ImageIcon grass = new ImageIcon("grass.svg");
 
-    private Timer timer;
-    private int delay=100;
+//    private Timer timer;
+//    private int delay=100;
 
 //    private int epoch=0;
 
     public static boolean paused=true;
+    public static boolean drawn=true;
     private boolean closed=false;
+    private boolean showing=false;
 
     private Vector2d field;
     private int width=851;
@@ -55,7 +58,7 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
         if(!this.closed) {
             //header border
             g.setColor(Color.WHITE);
-            g.drawRect(24, 10, this.width * 2 + 48 + 40, 155);
+            g.drawRect(24, 10, this.width * 2 + 48, 155);
 
             //pause
             g.setColor(Color.RED);
@@ -96,6 +99,7 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
             g.dispose();
             System.exit(0);
         }
+        drawn=true;
     }
 
     @Override
@@ -136,21 +140,43 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
     }
 
     public void paintHeader(Graphics g, int x, int y, int width, int height, LoopedMap map){
+        //All animals with the same genotype
         g.setColor(Color.GREEN);
-        g.fillRect(x+width-250, y+20, 200, 70);
+        g.fillRect(x+width-150-200, y+20, 150, 50);
         g.setColor(Color.BLACK);
-        g.setFont(new Font("arial", Font.PLAIN, 30));
-        g.drawString("Print", x+width-250+65, y+20+43);
+        g.setFont(new Font("arial", Font.PLAIN, 20));
+        g.drawString("Top Genes", x+width-150-200+20, y+20+31);
 
+
+        //Print
+        g.setColor(Color.GREEN);
+        g.fillRect(x+width-150, y+20, 100, 50);
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("arial", Font.PLAIN, 25));
+        g.drawString("Print", x+width-150+20, y+20+33);
+
+
+        //Statistics
         g.setColor(Color.WHITE);
         g.setFont(new Font("arial", Font.PLAIN, 14));
         g.drawString("Epoch: "+map.statistics.getEpochs(), x+80, 30);
         g.drawString("Animals: "+map.statistics.getCurrentAnimalCount(), x+71, 50);
         g.drawString("Weeds: "+map.statistics.getCurrentWeedsCount(), x+76, 70);
         g.drawString("Genotype: "+map.statistics.getMostCommonGenotype(), x+56,90);
-        g.drawString("Average Energy: "+map.statistics.getCurrentAvgEnergy(), x+16,110);
-        g.drawString("Average Life: "+map.statistics.getCurrentAvgLife(), x+41,130);
-        g.drawString("Average Kids: "+map.statistics.getCurrentKidsCount(), x+36,150);
+        g.drawString("Average Energy: "+String.format("%.3f", map.statistics.getCurrentAvgEnergy()), x+16,110);
+        g.drawString("Average Life: "+String.format("%.3f", map.statistics.getCurrentAvgLife()), x+41,130);
+        g.drawString("Average Kids: "+String.format("%.3f", map.statistics.getCurrentKidsCount()), x+36,150);
+
+
+        //Selected Animal
+        if(map.isFollowed){
+            g.drawString("That animal's Genotype: "+map.following.getParent().getGenes(), x+250, 110);
+            g.drawString("That animal's Kids Count: "+map.following.getKidsCount(), x+250, 150);
+            g.drawString("That animal's Descendants Count: "+map.following.getDescendantsCount(), x+500, 150);
+            g.drawString("Epochs being followed: " + (map.statistics.getEpochs()-map.following.getStartEpoch()), x+250, 130);
+            if(map.following.getDeathEpoch()!=-1)
+                g.drawString("That animal's Death Epoch: " + map.following.getDeathEpoch(), x + 500, 130);
+        }
     }
 
     public void paintMap(Graphics g, int x, int y, int width, int height, LoopedMap map){
@@ -186,6 +212,24 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
                 //g.drawRect(x+i*this.field.x, y+j*this.field.y, this.field.x, this.field.y);
             }
         }
+
+        if(map.isFollowed){
+            int sizex=field.x/3;
+//            int sizey=field.y/3;
+            Animal parent=map.following.getParent();
+            g.setColor(Color.WHITE);
+            g.fillRect(x+parent.getPosition().x*field.x+sizex, y+parent.getPosition().y*field.y, sizex, field.y);
+//            g.fillRect(x+parent.getPosition().x*field.x, y+parent.getPosition().y*field.y+sizey, field.x, sizey);
+        }
+
+        if(showing){
+//            int sizex=field.x/3;
+            int sizey=field.y/3;
+            g.setColor(Color.WHITE);
+            HashSet<Animal> animals = map.statistics.getMostCommonAnimals();
+            for(Animal animal: animals)
+                g.fillRect(x+animal.getPosition().x*field.x, y+animal.getPosition().y*field.y+sizey, field.x, sizey);
+        }
     }
 
     public void addMouseClickListener(){
@@ -212,24 +256,52 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
                     Visualisation.paused=!Visualisation.paused;
                     System.out.println(Visualisation.paused);
                 }
-                else if(pos.follows(new Vector2d(25+width-250, 10+20)) && pos.precedes(new Vector2d(25+width-250+200, 10+20+70))){//leftprint
+                else if(pos.follows(new Vector2d(24+width-150, 10+20)) && pos.precedes(new Vector2d(24+width-150+100, 10+20+50))){//leftprint
                     System.out.println("Left print: "+x +","+ y);
                     leftMap.statistics.saveStatistics("Left");
                 }
-                else if(pos.follows(new Vector2d(25+width+48+width-250, 10+20)) && pos.precedes(new Vector2d(25+width+48+width-250+200, 10+20+70))){//rightprint
+                else if(pos.follows(new Vector2d(24+width+48+width-150, 10+20)) && pos.precedes(new Vector2d(24+width+48+width-150+100, 10+20+50))){//rightprint
                     System.out.println("Right print: "+x +","+ y);
                     rightMap.statistics.saveStatistics("Right");
                 }
-                else if(pos.follows(new Vector2d(25, 185)) && pos.precedes(new Vector2d(25+width-1, 185+height-1))){//leftmap
-                    System.out.print("Left map: "+x +","+ y);
-                    System.out.println("\tLeft map: "+(x-25)/field.x +","+ (y-185)/field.y);
+                else if(pos.follows(new Vector2d(24+width-150-200, 10+20)) && pos.precedes(new Vector2d(24+width-150-200+150, 10+20+50))) {//leftallgenes
+                    System.out.println("Left most Top Genes: " + x + "," + y);
+                    showing=!showing;
                 }
-                else if(pos.follows(new Vector2d(25+width+48, 185)) && pos.precedes(new Vector2d(25+width+48+width-1, 185+height-1))){//rightmap
+                else if(pos.follows(new Vector2d(24+width+48+width-150-200, 10+20)) && pos.precedes(new Vector2d(24+width+48+width-150-200+150, 10+20+50))) {//rightallgenes
+                    System.out.println("Right most Top Genes: " + x + "," + y);
+                    showing=!showing;
+                }
+                else if(pos.follows(new Vector2d(25, 185)) && pos.precedes(new Vector2d(25+width, 185+height))){//leftmap
+                    System.out.print("Left map: "+x +","+ y);
+                    int ix=(x-25)/field.x;
+                    int iy=(y-185)/field.y;
+                    System.out.println("\tLeft map: "+ ix +","+iy);
+                    clickedOnMap(ix, iy, leftMap);
+                }
+                else if(pos.follows(new Vector2d(25+width+48, 185)) && pos.precedes(new Vector2d(25+width+48+width, 185+height))){//rightmap
                     System.out.print("Right map: "+x +","+ y);
-                    System.out.println("\tRight map: "+(x-25-width-48)/field.x +","+ (y-185)/field.y);
+                    int ix=(x-25-width-48)/field.x;
+                    int iy=(y-185)/field.y;
+                    System.out.println("\tRight map: "+ ix +","+ iy);
+                    clickedOnMap(ix, iy, rightMap);
                 }
             }
         });
+    }
+
+    private void clickedOnMap(int x, int y, LoopedMap map) {
+        boolean f=true;
+        if(map.isFollowed) {
+            map.resetFollowing();
+            if(!map.following.getParent().getPosition().equals(new Vector2d(x, y)))
+                map.isClicked(x, y);
+        }
+        else
+            f= map.isClicked(x, y);
+        if(f)
+            repaint();
+        System.out.println(map.isFollowed);
     }
 
 }

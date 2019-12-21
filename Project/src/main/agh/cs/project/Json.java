@@ -14,7 +14,6 @@ public class Json {
     public static int moveEnergy;
     public static int plantEnergy;
     public static double jungleRatio;
-    public static boolean dbl;
     public static int animals;
     public static boolean debug=false;
 
@@ -32,7 +31,6 @@ public class Json {
         Json.moveEnergy = JsonObject.getInt("moveEnergy");
         Json.plantEnergy = JsonObject.getInt("plantEnergy");
         Json.jungleRatio = JsonObject.getDouble("jungleRatio");
-        Json.dbl = JsonObject.getBoolean("double");
         Json.animals = JsonObject.getInt("startingAnimals");
     }
 

@@ -18,6 +18,7 @@ public class Genes {
         for(int i=0; i<32; i++){
             this.instructions[i]=Instruction.fromNumerical(map.generator.nextInt(8));
         }
+        check(this.instructions);
         Arrays.sort(this.instructions);
     }
 
@@ -46,12 +47,42 @@ public class Genes {
         return Arrays.hashCode(instructions);//hopefully works
     }
 
+    private static void check(Instruction[] gene){
+        Integer[] occurrences = new Integer[8];
+        for(int i=0; i<8; i++)
+            occurrences[i]=0;
+        for(Instruction instruction: gene){
+            occurrences[instruction.getNumerical()]++;
+        }
+        int missing=0;
+        for(int i=0; i<8; i++)
+            if(occurrences[i]!=0)
+                missing++;
+        if(missing==0)
+            return;
+        for(int i=0; i<32; i++){
+            if(occurrences[gene[i].getNumerical()]>1){
+                for(int j=0; j<8; j++){
+                    if(occurrences[j]==0){
+                        occurrences[j]++;
+                        gene[i]=Instruction.fromNumerical(j);
+                        missing--;
+                    }
+                }
+            }
+            if(missing==0)
+                return;
+        }
+    }
+
     public Genes mutate(Genes other, LoopedMap map){
-        int a=map.generator.nextInt(32);
-        int b=map.generator.nextInt(32);
+        int a=map.generator.nextInt(31);
+        int b=map.generator.nextInt(31);
         Instruction[] gene=this.instructions.clone();
-        if (-min(-a, -b) - min(a, b) >= 0)
-            System.arraycopy(other.instructions, min(a, b), gene, min(a, b), -min(-a, -b) - min(a, b));
+//        if (-min(-a, -b) - min(a, b) >= 0)
+        System.arraycopy(other.instructions, min(a, b), gene, min(a, b), -min(-a, -b) - min(a, b)+1);
+//        gene = check();
+        check(gene);
         Arrays.sort(gene);
         return new Genes(gene);
     }

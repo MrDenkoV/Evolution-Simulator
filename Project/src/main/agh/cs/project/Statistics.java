@@ -71,6 +71,10 @@ public class Statistics{
         return this.currentKidsCount;
     }
 
+    public HashSet<Animal> getMostCommonAnimals(){
+        return this.genotypes.get(this.mostCommonGenotype);
+    }
+
     public void setCurrentAnimalCount(long animals){
         this.currentAnimalCount=animals;
         this.totalAnimalCount+=animals;
@@ -102,18 +106,20 @@ public class Statistics{
 //        if(this.mostCommonGenotype<occurrences){
 //            this.mostCommonGenotype=occurrences;
         long occurrences = this.genotypes.get(genotype).size();
-        if(this.mostCommonGenotypeCounter <occurrences){
+        if(this.mostCommonGenotypeCounter < occurrences){
             this.setMostCommonGenotype(genotype);
-            this.mostCommonGenotypeCounter =occurrences;
+            this.mostCommonGenotypeCounter = occurrences;
         }
     }
 
     public void resetGenotypes(){
         for(Genes genotype: this.genotypes.keySet()){
-            long sizes=this.genotypes.get(genotype).size();
-            if(this.mostCommonGenotypeCounter>sizes){
-                this.mostCommonGenotypeCounter=sizes;
-                this.mostCommonGenotype=genotype;
+            if(this.genotypes.get(genotype)!=null) {
+                long sizes = this.genotypes.get(genotype).size();
+                if (this.mostCommonGenotypeCounter < sizes) {
+                    this.mostCommonGenotypeCounter = sizes;
+                    this.mostCommonGenotype = genotype;
+                }
             }
         }
     }
@@ -121,9 +127,10 @@ public class Statistics{
     public void removeGenotype(Animal animal){
         Genes genotype = animal.getGenes();
         this.genotypes.get(genotype).remove(animal);
-        this.mostCommonGenotypeCounter--;
-        if(this.mostCommonGenotype.equals(genotype))
+        if(this.mostCommonGenotype.equals(genotype)) {
+            this.mostCommonGenotypeCounter--;
             this.resetGenotypes();
+        }
     }
 
     public void incrementDeadAnimals(){

@@ -84,15 +84,15 @@ public class Turns {
                         }
 
                         Animal bby;
-                        if(strongestAnimal.isDescendant||secondStrongestAnimal.isDescendant){
+                        if(strongestAnimal.isDescendant || secondStrongestAnimal.isDescendant){
                             bby = new Animal(pos, strongestAnimal.getGenes().mutate(secondStrongestAnimal.getGenes(), map), secondStrongestAnimal.energy/4+strongestAnimal.energy/4, map, true);
-                            if(strongestAnimal.equals(map.following.getParent())||secondStrongestAnimal.equals(map.following.getParent()))
+                            if(strongestAnimal.equals(map.following.getParent()) || secondStrongestAnimal.equals(map.following.getParent()))
                                 map.following.addKid();
                             else
                                 map.following.addDescendant();
                         }
                         else
-                            bby = new Animal(pos, strongestAnimal.getGenes().mutate(secondStrongestAnimal.getGenes(), map), secondStrongestAnimal.energy/4+strongestAnimal.energy/4, map);
+                            bby = new Animal(pos, strongestAnimal.getGenes().mutate(secondStrongestAnimal.getGenes(), map), secondStrongestAnimal.energy/4+strongestAnimal.energy/4, map, false);
 
                         strongestAnimal.addKid();
                         secondStrongestAnimal.addKid();

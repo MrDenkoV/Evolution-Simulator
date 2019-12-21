@@ -54,10 +54,13 @@ public class World {
             obj.add(vis);
 
             while(true){
+                while(!Visualisation.drawn)
+                    Thread.sleep(5);
                 if(!Visualisation.paused) {
                     leftMap.turn();
                     rightMap.turn();
                 }
+                Visualisation.drawn=false;
                 obj.repaint();
                 Thread.sleep(50);
             }
