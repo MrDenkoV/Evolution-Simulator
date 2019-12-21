@@ -3,6 +3,8 @@
 Recommended Resolution: at least 1920x1080
 
 It's recommended  to clone using git clone... then open in intellij(or wherever) the directory "Project" - it's required to install (using maven) Dependecie: org.json and commons-io
+Or try running jar in out/artifacts/Project_jar/Project.jar
+
 
 
 Animation starts paused - to unpause press space, 'p' or button "start"
