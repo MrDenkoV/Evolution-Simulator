@@ -50,7 +50,7 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
             g.fillRect(25 + width, 11, 47, 154);
             g.setColor(Color.WHITE);
             g.setFont(new Font("arial", Font.PLAIN, 30));
-            if(paused) {
+            if(!paused) {
                 g.drawString("P", 24 + width + 14, 40);
                 g.drawString("A", 24 + width + 14, 70);
                 g.drawString("U", 24 + width + 14, 100);
