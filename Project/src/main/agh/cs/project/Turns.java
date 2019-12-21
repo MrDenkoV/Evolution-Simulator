@@ -127,9 +127,17 @@ public class Turns {
         eat(animals, hashmap, map);
         breed(animals, hashmap, map);
         weeds(map);
+        setStatistics(map);
+//        System.out.println(animals.size());
+    }
+
+    public static void setStatistics(LoopedMap map){
+        LinkedList<Animal> animals=map.animals;
+
         map.statistics.epochsIncrement();
         map.statistics.setCurrentAnimalCount(animals.size());
         map.statistics.setCurrentWeedsCount(map.weedsCount);
+
         double energy=0;
         double life=0;
         double kids=0;
@@ -147,6 +155,6 @@ public class Turns {
             map.statistics.setCurrentKidsCount(kids / danimals);
 //            map.statistics.setCurrentAvgLife(life / danimals);
         }
-//        System.out.println(animals.size());
+
     }
 }

@@ -19,6 +19,8 @@ public class World {
                 Animal.generateAnimal(leftMap);
                 Animal.generateAnimal(rightMap);
             }
+            leftMap.setStatistics();
+            rightMap.setStatistics();
 
 //            System.out.println(map.toString());
 //            for(int i = 0; i< Json.animals; i++)

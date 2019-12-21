@@ -20,7 +20,7 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
 
 //    private int epoch=0;
 
-    public boolean paused=false;
+    public boolean paused=true;
     private boolean closed=false;
 
     private Vector2d field;

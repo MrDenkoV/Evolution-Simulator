@@ -73,6 +73,10 @@ public class LoopedMap implements IWorldMap, IPositionChangeObserver{
         Turns.turn(animals, elements, this);
     }
 
+    public void setStatistics(){
+        Turns.setStatistics(this);
+    }
+
     public void startFollowing(Animal animal){
         this.following=new FollowAnimal(animal);
     }
