@@ -1,42 +1,20 @@
 package agh.cs.project;
 
 import java.util.LinkedList;
-import java.util.Random;
 
 public class Animal implements IMapElement{
-    private Vector2d position;      //priviate?
-    private Genes genes;            //private?
+    private Vector2d position;
+    private Genes genes;
     MapDirection direction;
     protected static int threshold;
     protected static int moveEnergy;
     protected int energy;
-    //protected static Random generator = new Random();
     protected LinkedList<IPositionChangeObserver> observers = new LinkedList<>();
     protected boolean isDescendant;
     private LoopedMap map;
     private long kidsCount;
     private long life=0;
 
-
-//    public Animal(Vector2d position, Genes genes, int energy, IWorldMap map){
-//        this.position=position;
-//        this.genes=genes;
-//        this.energy=energy;
-//        this.direction = MapDirection.N;
-//        this.direction = direction.fromNumerical(generator.nextInt(8));
-////        this.map=map;
-//    }
-
-    public Animal(Vector2d position, Genes genes, int energy, LoopedMap map){
-        this.position=position;
-        this.genes=genes;
-        this.energy=energy;
-        this.direction = MapDirection.N;
-        this.direction = direction.fromNumerical(map.generator.nextInt(8));
-        this.map=map;
-        this.kidsCount=0;
-        this.isDescendant=false;
-    }
 
     public Animal(Vector2d position, Genes genes, int energy, LoopedMap map, boolean isDescendant){
         this.position=position;

@@ -5,8 +5,6 @@ import java.io.File;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
 
-//https://www.codevoila.com/post/65/java-json-tutorial-and-example-json-java-orgjson?fbclid=IwAR1i5kAna6ma_QsUup5YfBNZDARIfYrevKFUN7N-qtLsGRzQe6JzW3TpYCc
-
 public class Json {
     public static int width;
     public static int height;
@@ -15,7 +13,6 @@ public class Json {
     public static int plantEnergy;
     public static double jungleRatio;
     public static int animals;
-    public static boolean debug=false;
 
     public static void readJSON() throws Exception {
         File file = new File("./parameters.json");
@@ -46,7 +43,6 @@ public class Json {
 
         String name=side+"Epochs"+String.valueOf(epochs)+".json";
 
-//        System.out.println(JsonObj.toString(4));
         File file = new File(name);
         FileUtils.writeStringToFile(file, JsonObj.toString(4), "utf-8");
     }

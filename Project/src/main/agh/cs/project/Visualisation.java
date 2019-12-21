@@ -12,11 +12,6 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
     private ImageIcon jungle = new ImageIcon("jungle.svg");
     private ImageIcon grass = new ImageIcon("grass.svg");
 
-//    private Timer timer;
-//    private int delay=100;
-
-//    private int epoch=0;
-
     public static boolean paused=true;
     public static boolean drawn=true;
     private boolean closed=false;
@@ -29,18 +24,6 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
     private LoopedMap leftMap;
     private LoopedMap rightMap;
 
-//    public Visualisation(LoopedMap leftMap, LoopedMap rightMap){
-//        this.field = new Vector2d(width/(leftMap.upperRight.x+1), height/(leftMap.upperRight.y+1));
-//        this.leftMap=leftMap;
-//        this.rightMap=rightMap;
-//        this.width=this.width-this.width%(leftMap.upperRight.x+1);
-//        this.height=this.height-this.height%(leftMap.upperRight.y+1);
-//        addKeyListener(this);
-//        setFocusable(true);
-//        setFocusTraversalKeysEnabled(false);
-//        timer = new Timer(delay, this);
-//        timer.start();
-//    }
 
     public Visualisation(LoopedMap leftMap, LoopedMap rightMap) {
         this.field = new Vector2d(width / (leftMap.upperRight.x + 1), height / (leftMap.upperRight.y + 1));
@@ -107,9 +90,6 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
     public void actionPerformed(ActionEvent actionEvent) {
         if(this.closed)
             repaint();
-        //timer.start();
-//        if(this.paused)
-//            repaint();
     }
 
     @Override
@@ -121,17 +101,10 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
     public void keyPressed(KeyEvent keyEvent) {
         if(keyEvent.getKeyCode() == KeyEvent.VK_ESCAPE) {
             this.closed=true;
-            //paint();
-            //g.dispose();
-            //System.exit(0);
         }
         if(keyEvent.getKeyCode() == KeyEvent.VK_P || keyEvent.getKeyCode() == KeyEvent.VK_SPACE){
             paused=!paused;
-            System.out.println(paused);
-            /*if(paused)
-                timer.stop();
-            else
-                timer.restart();*/
+//            System.out.println(paused);
         }
     }
 
@@ -210,21 +183,17 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
                         g.setColor(Color.MAGENTA.brighter());
                 }
                 g.fillRect(x+i*this.field.x, y+j*this.field.y, this.field.x, this.field.y);
-                //g.drawRect(x+i*this.field.x, y+j*this.field.y, this.field.x, this.field.y);
             }
         }
 
         if(map.isFollowed){
             int sizex=field.x/3;
-//            int sizey=field.y/3;
             Animal parent=map.following.getParent();
             g.setColor(Color.WHITE);
             g.fillRect(x+parent.getPosition().x*field.x+sizex, y+parent.getPosition().y*field.y, sizex, field.y);
-//            g.fillRect(x+parent.getPosition().x*field.x, y+parent.getPosition().y*field.y+sizey, field.x, sizey);
         }
 
         if((showingLeft && map.equals(leftMap)) || (showingRight && map.equals(rightMap))){
-//            int sizex=field.x/3;
             int sizey=field.y/3;
             g.setColor(Color.WHITE);
             HashSet<Animal> animals = map.statistics.getMostCommonAnimals();
@@ -238,7 +207,7 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
             public void mouseClicked(MouseEvent e) {
                 int x = e.getX();
                 int y = e.getY();
-                System.out.println(x + "," + y);
+//                System.out.println(x + "," + y);
                 try {
                     this.classifyAndAct(x, y);
                 }catch (IOException ex){
@@ -251,40 +220,39 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
             }
 
             private void classifyAndAct(int x, int y) throws Exception {
-//                g.drawRect(24 + width, 10, 48, 155);
                 Vector2d pos=new Vector2d(x, y);
                 if(pos.follows(new Vector2d(24+width, 10)) && pos.precedes(new Vector2d(24+width+48, 10+155))){//pause
                     Visualisation.paused=!Visualisation.paused;
-                    System.out.println(Visualisation.paused);
+//                    System.out.println(Visualisation.paused);
                 }
                 else if(pos.follows(new Vector2d(24+width-150, 10+20)) && pos.precedes(new Vector2d(24+width-150+100, 10+20+50))){//leftprint
-                    System.out.println("Left print: "+x +","+ y);
+//                    System.out.println("Left print: "+x +","+ y);
                     leftMap.statistics.saveStatistics("Left");
                 }
                 else if(pos.follows(new Vector2d(24+width+48+width-150, 10+20)) && pos.precedes(new Vector2d(24+width+48+width-150+100, 10+20+50))){//rightprint
-                    System.out.println("Right print: "+x +","+ y);
+//                    System.out.println("Right print: "+x +","+ y);
                     rightMap.statistics.saveStatistics("Right");
                 }
                 else if(pos.follows(new Vector2d(24+width-150-200, 10+20)) && pos.precedes(new Vector2d(24+width-150-200+150, 10+20+50))) {//leftallgenes
-                    System.out.println("Left most Top Genes: " + x + "," + y);
+//                    System.out.println("Left most Top Genes: " + x + "," + y);
                     showingLeft=!showingLeft;
                 }
                 else if(pos.follows(new Vector2d(24+width+48+width-150-200, 10+20)) && pos.precedes(new Vector2d(24+width+48+width-150-200+150, 10+20+50))) {//rightallgenes
-                    System.out.println("Right most Top Genes: " + x + "," + y);
+//                    System.out.println("Right most Top Genes: " + x + "," + y);
                     showingRight=!showingRight;
                 }
                 else if(pos.follows(new Vector2d(25, 185)) && pos.precedes(new Vector2d(25+width, 185+height))){//leftmap
-                    System.out.print("Left map: "+x +","+ y);
+//                    System.out.print("Left map: "+x +","+ y);
                     int ix=(x-25)/field.x;
                     int iy=(y-185)/field.y;
-                    System.out.println("\tLeft map: "+ ix +","+iy);
+//                    System.out.println("\tLeft map: "+ ix +","+iy);
                     clickedOnMap(ix, iy, leftMap);
                 }
                 else if(pos.follows(new Vector2d(25+width+48, 185)) && pos.precedes(new Vector2d(25+width+48+width, 185+height))){//rightmap
-                    System.out.print("Right map: "+x +","+ y);
+//                    System.out.print("Right map: "+x +","+ y);
                     int ix=(x-25-width-48)/field.x;
                     int iy=(y-185)/field.y;
-                    System.out.println("\tRight map: "+ ix +","+ iy);
+//                    System.out.println("\tRight map: "+ ix +","+ iy);
                     clickedOnMap(ix, iy, rightMap);
                 }
             }
@@ -302,7 +270,6 @@ public class Visualisation extends JPanel implements KeyListener, ActionListener
             f= map.isClicked(x, y);
         if(f)
             repaint();
-        System.out.println(map.isFollowed);
     }
 
 }

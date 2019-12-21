@@ -76,8 +76,6 @@ public class MapVisualizer {
     private String drawObject(Vector2d currentPosition, Vector2d jungleLowerLeft, Vector2d jungleUpperRight) {
         String result = null;
         if (this.map.isOccupied(currentPosition)) {
-            //Object object = this.map.objectAt(currentPosition);
-//            LinkedList<IMapElement> objects = this.map.objectsAt(currentPosition);
             LinkedList objects = this.map.objectsAt(currentPosition);
             if(objects!=null && objects.size()>1)
 //                result = MULTIPLE_CELL;

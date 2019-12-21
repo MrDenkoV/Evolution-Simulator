@@ -7,7 +7,6 @@ import static java.lang.Math.min;
 
 public class Genes {
     Instruction[] instructions;
-    //protected static Random generator = new Random();
 
     public Genes(Instruction[] genes){
         this.instructions=genes;
@@ -24,14 +23,10 @@ public class Genes {
 
     @Override
     public String toString() {
-//        return Arrays.toString(instructions);
         StringBuilder wyn= new StringBuilder();
         for(Instruction instruction: instructions)
             wyn.append(instruction.getNumerical());
         return wyn.toString();
-//        return "Genes{" +
-//                "instructions=" + Arrays.toString(instructions) +
-//                '}';
     }
 
     @Override
@@ -44,7 +39,7 @@ public class Genes {
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(instructions);//hopefully works
+        return Arrays.hashCode(instructions);
     }
 
     private static void check(Instruction[] gene){
@@ -79,9 +74,7 @@ public class Genes {
         int a=map.generator.nextInt(31);
         int b=map.generator.nextInt(31);
         Instruction[] gene=this.instructions.clone();
-//        if (-min(-a, -b) - min(a, b) >= 0)
         System.arraycopy(other.instructions, min(a, b), gene, min(a, b), -min(-a, -b) - min(a, b)+1);
-//        gene = check();
         check(gene);
         Arrays.sort(gene);
         return new Genes(gene);

@@ -90,7 +90,6 @@ public class Statistics{
     }
 
     public void addGenotype(Animal animal){
-//        long occurrences = 1;
         Genes genotype = animal.getGenes();
         if(this.genotypes.get(genotype)==null) {
             HashSet<Animal> animals= new HashSet<>();
@@ -98,13 +97,8 @@ public class Statistics{
             this.genotypes.put(genotype, animals);
         }
         else{
-//            occurrences=this.genotypes.get(genotype);
-//            this.genotypes.remove(genotype);
-//            this.genotypes.put(genotype, occurrences+1);
             this.genotypes.get(genotype).add(animal);
         }
-//        if(this.mostCommonGenotype<occurrences){
-//            this.mostCommonGenotype=occurrences;
         long occurrences = this.genotypes.get(genotype).size();
         if(this.mostCommonGenotypeCounter < occurrences){
             this.setMostCommonGenotype(genotype);
@@ -144,12 +138,8 @@ public class Statistics{
 
     public void setCurrentAvgLife(double avgLife){
         double tmp=this.currentAvgLife*this.deadAnimals;
-//        this.currentAvgLife=avgLife;
-//        this.totalAvgLife+=(avgLife+tmp);
-//        this.currentAvgLife=((double) avgLife+this.totalAvgEnergy)/deadAnimals;
         this.incrementDeadAnimals();
         this.currentAvgLife=(avgLife+tmp)/deadAnimals;
-//        this.totalAvgLife+=currentAvgLife;
     }
 
     public void increaseTotalAvgLife(){

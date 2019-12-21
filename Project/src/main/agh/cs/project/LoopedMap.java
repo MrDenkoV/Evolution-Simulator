@@ -63,14 +63,6 @@ public class LoopedMap implements IWorldMap, IPositionChangeObserver{
     }
 
     public void turn() {
-//        kill&&move
-//        Turns.move(animals);
-//        eat
-//        Turns.eat(animals,elements);
-//        breed
-//        Turns.breed(animals, elements, this);
-//        plants
-//        Turns.weeds(this);
         Turns.turn(animals, elements, this);
     }
 

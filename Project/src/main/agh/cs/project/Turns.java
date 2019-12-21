@@ -6,14 +6,13 @@ public class Turns {
     //kill&&move
     private static void move(LinkedList<Animal> animals){
         ArrayList<Animal> animals1 = new ArrayList<>(animals);
-        if(Json.debug) System.out.println("BeforeMove "+animals1.size());
+//        System.out.println("BeforeMove "+animals1.size());
         for(Animal animal: animals1)
         {
             animal.move();
-            if(Json.debug) System.out.println(animal.getPosition());
+//            System.out.println(animal.getPosition());
         }
-        if(Json.debug)
-            System.out.println("Move");
+//        System.out.println("Move");
     }
 
     //eat
@@ -40,7 +39,7 @@ public class Turns {
                 }
             }
         }
-        if(Json.debug) System.out.println("Eat");
+//        System.out.println("Eat");
     }
 
     //breed
@@ -98,7 +97,6 @@ public class Turns {
                         secondStrongestAnimal.addKid();
                         children.add(bby);
                         kidsPositions.add(pos);
-//                        map.placeAnimal(bby);
                         strongestAnimal.energy=strongestAnimal.energy*3/4;
                         secondStrongestAnimal.energy=secondStrongestAnimal.energy*3/4;
                     }
@@ -107,7 +105,7 @@ public class Turns {
         }
         for(Animal bby: children)
             map.placeAnimal(bby);
-        if(Json.debug) System.out.println("breed");
+//        System.out.println("breed");
     }
 
     //plants
@@ -115,11 +113,11 @@ public class Turns {
         for(int i=0; i<map.upperRight.x*map.upperRight.y/4+10; i++){
             if(map.placeWeed(new Weeds(map.lowerLeft.randOutside(map.upperRight, map.lowerLeftJungle, map.upperRightJungle, map)))) break;
         }
-        if(Json.debug) System.out.println("weed");
+//        System.out.println("weed");
         for(int i=0; i<map.upperRightJungle.x*map.upperRightJungle.y/4+10; i++){
             if(map.placeWeed(new Weeds(map.lowerLeftJungle.randInRange(map.upperRightJungle, map)))) break;
         }
-        if(Json.debug) System.out.println("plant");
+//        System.out.println("plant");
     }
 
     public static void turn(LinkedList<Animal> animals, Map<Vector2d, LinkedList<IMapElement>> hashmap, LoopedMap map){
@@ -128,7 +126,6 @@ public class Turns {
         breed(animals, hashmap, map);
         weeds(map);
         setStatistics(map);
-//        System.out.println(animals.size());
     }
 
     public static void setStatistics(LoopedMap map){
@@ -142,18 +139,14 @@ public class Turns {
         double life=0;
         double kids=0;
         double danimals=(double) animals.size();
-        Genes genotype;
-//        if(genotype)
         for(Animal animal: animals){
             kids+=animal.getKids();
-//            life+=animal.getLife();
             energy+=animal.getEnergy();
             animal.incrementAge();
         }
         if(animals.size()>0) {
             map.statistics.setCurrentAvgEnergy(energy / danimals);
             map.statistics.setCurrentKidsCount(kids / danimals);
-//            map.statistics.setCurrentAvgLife(life / danimals);
         }
         map.statistics.increaseTotalAvgLife();
     }

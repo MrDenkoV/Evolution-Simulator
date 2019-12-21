@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3fb88b47-f1b2-4fe2-87f7-ff3cd79ac81e" name="Default Changelist" comment="Working Final Version without cleaning comments!">
+    <list default="true" id="3fb88b47-f1b2-4fe2-87f7-ff3cd79ac81e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LeftEpochs1.json" beforeDir="false" afterPath="$PROJECT_DIR$/LeftEpochs1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LeftEpochs1042.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LeftEpochs201.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LeftEpochs53.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RightEpochs1.json" beforeDir="false" afterPath="$PROJECT_DIR$/RightEpochs1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RightEpochs1042.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RightEpochs201.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RightEpochs53.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Genes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Genes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Json.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Json.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/LoopedMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/LoopedMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/MapVisualizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/MapVisualizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Statistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Statistics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Turns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Turns.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Vector2d.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Vector2d.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/Visualisation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/Visualisation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/agh/cs/project/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/agh/cs/project/World.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576963809341</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Working Final Version without cleaning comments!">
+      <created>1576964027879</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1576964027879</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,30 +368,30 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="718" y="35" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1576760935418" />
-    <state x="533" y="118" key="CommitChangelistDialog2" timestamp="1576963832681">
+    <state x="533" y="118" key="CommitChangelistDialog2" timestamp="1576964773088">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="533" y="118" key="CommitChangelistDialog2/0.0.1920.1044@0.0.1920.1044" timestamp="1576963832681" />
+    <state x="533" y="118" key="CommitChangelistDialog2/0.0.1920.1044@0.0.1920.1044" timestamp="1576964773088" />
     <state x="1225" y="278" key="FileChooserDialogImpl" timestamp="1576367045820">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="1225" y="278" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1576367045820" />
-    <state width="1878" height="119" key="GridCell.Tab.0.bottom" timestamp="1576963913592">
+    <state width="1878" height="119" key="GridCell.Tab.0.bottom" timestamp="1576964773110">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1878" height="119" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1576963913592" />
-    <state width="1878" height="119" key="GridCell.Tab.0.center" timestamp="1576963913591">
+    <state width="1878" height="119" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1576964773110" />
+    <state width="1878" height="119" key="GridCell.Tab.0.center" timestamp="1576964773110">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1878" height="119" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1576963913591" />
-    <state width="1878" height="119" key="GridCell.Tab.0.left" timestamp="1576963913590">
+    <state width="1878" height="119" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1576964773110" />
+    <state width="1878" height="119" key="GridCell.Tab.0.left" timestamp="1576964773110">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1878" height="119" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1576963913590" />
-    <state width="1878" height="119" key="GridCell.Tab.0.right" timestamp="1576963913591">
+    <state width="1878" height="119" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1576964773110" />
+    <state width="1878" height="119" key="GridCell.Tab.0.right" timestamp="1576964773110">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1878" height="119" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1576963913591" />
+    <state width="1878" height="119" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1576964773110" />
     <state width="1878" height="341" key="GridCell.Tab.1.bottom" timestamp="1576871661589">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
@@ -419,10 +428,10 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="1078" y="417" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1044@0.0.1920.1044" timestamp="1576921392138" />
-    <state x="738" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576362081121">
+    <state x="738" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576964372392">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="738" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1044@0.0.1920.1044" timestamp="1576362081121" />
+    <state x="738" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1044@0.0.1920.1044" timestamp="1576964372392" />
     <state x="694" y="302" key="extract.method.dialog" timestamp="1576952293525">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>

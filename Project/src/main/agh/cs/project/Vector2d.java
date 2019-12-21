@@ -1,13 +1,10 @@
 package agh.cs.project;
 
-import java.util.Random;
-
 import static java.lang.Math.abs;
 
 public class Vector2d {
     public final int x;
     public final int y;
-//    protected static Random generator = new Random();
 
     public Vector2d(int x, int y) {
         this.x = x;
