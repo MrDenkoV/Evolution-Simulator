@@ -1,4 +1,4 @@
-# OPPyFSTProject
+# Evolution Simulator
 
 Recommended Resolution: at least 1920x1080
 
